@@ -45,10 +45,73 @@ margin-bottom: 0.75rem;
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.mobile-menu { display: none; position: fixed; top: 0; right: 0; left: 0; bottom: 0; background: rgba(13,27,42,0.98); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+.mobile-menu {
+display: none;
+position: fixed;
+top: 0; right: 0; left: 0; bottom: 0;
+background: var(--navy-mid);
+z-index: 150;
+flex-direction: column;
+padding: 6rem 2rem 2.5rem;
+overflow-y: auto;
+}
 .mobile-menu.open { display: flex; }
-.mobile-menu a { color: var(--cream); text-decoration: none; font-family: 'Frank Ruhl Libre', serif; font-size: 2rem; font-weight: 700; transition: color 0.3s; }
+
+.mobile-menu-links {
+display: flex;
+flex-direction: column;
+flex: 1;
+}
+
+.mobile-menu a {
+color: var(--cream);
+text-decoration: none;
+font-family: 'Heebo', sans-serif;
+font-size: 1.3rem;
+font-weight: 400;
+padding: 1.1rem 0;
+border-bottom: 1px solid rgba(201,168,76,0.12);
+transition: color 0.2s;
+text-align: right;
+}
+.mobile-menu a:first-child { border-top: 1px solid rgba(201,168,76,0.12); }
 .mobile-menu a:hover { color: var(--gold); }
+
+.mobile-menu-header {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+padding-bottom: 1.5rem;
+margin-bottom: 0.5rem;
+border-bottom: 2px solid var(--gold);
+}
+.mobile-menu-logo {
+height: 56px;
+width: auto;
+mix-blend-mode: lighten;
+}
+.mobile-menu-title {
+color: var(--gold);
+font-family: 'Frank Ruhl Libre', serif;
+font-size: 1rem;
+font-weight: 700;
+line-height: 1.4;
+}
+
+.mobile-menu-cta {
+margin-top: 2.5rem;
+display: block;
+background: var(--gold);
+color: var(--navy);
+text-align: center;
+padding: 1rem;
+border-radius: 8px;
+font-weight: 700;
+font-size: 1.05rem;
+text-decoration: none;
+transition: all 0.3s;
+}
+.mobile-menu-cta:hover { background: var(--gold-light); }
 .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 3rem 4rem; position: relative; overflow: hidden; }
 .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(42,74,107,0.4) 0%, transparent 60%); pointer-events: none; }
 .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 70% 80% at 80% 50%, black 0%, transparent 70%); pointer-events: none; }
@@ -181,11 +244,17 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMenu()">עליי</a>
-  <a href="#courses" onclick="closeMenu()">קורסים</a>
-  <a href="#pricing" onclick="closeMenu()">חבילות</a>
-  <a href="#testimonials" onclick="closeMenu()">המלצות</a>
-  <a href="#contact" onclick="closeMenu()">צור קשר</a>
+  <div class="mobile-menu-header">
+    <img src="logo.png" alt="OR Farfara Logo" class="mobile-menu-logo">
+    <span class="mobile-menu-title">ליווי סטודנטים להנדסה אזרחית</span>
+  </div>
+  <div class="mobile-menu-links">
+    <a href="#about" onclick="closeMenu()">עליי</a>
+    <a href="#courses" onclick="closeMenu()">קורסים</a>
+    <a href="#pricing" onclick="closeMenu()">חבילות</a>
+    <a href="#testimonials" onclick="closeMenu()">המלצות</a>
+    <a href="#contact" onclick="closeMenu()">צור קשר</a>
+  </div>
 </div>
 
 <section class="hero">
