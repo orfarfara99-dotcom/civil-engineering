@@ -15,28 +15,9 @@
 html { scroll-behavior: smooth; }
 body { background: var(--navy); color: var(--cream); font-family: 'Heebo', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
 nav { position: fixed; top: 0; right: 0; left: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; background: rgba(13,27,42,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-.nav-logo {
-display: flex;
-align-items: center;
-gap: 0.75rem;
-font-family: 'Frank Ruhl Libre', serif;
-font-size: 1.25rem; font-weight: 700;
-color: var(--gold);
-letter-spacing: 0.03em;
-}
-.nav-logo img {
-height: 70px;
-width: auto;
-mix-blend-mode: lighten;
-filter: brightness(1.1);
-}
-.footer-logo {
-height: 90px;
-width: auto;
-mix-blend-mode: lighten;
-filter: brightness(1.1);
-margin-bottom: 0.75rem;
-}
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; font-family: 'Frank Ruhl Libre', serif; font-size: 1.25rem; font-weight: 700; color: var(--gold); letter-spacing: 0.03em; }
+.nav-logo img { height: 70px; width: auto; mix-blend-mode: lighten; filter: brightness(1.1); }
+.footer-logo { height: 90px; width: auto; mix-blend-mode: lighten; filter: brightness(1.1); margin-bottom: 0.75rem; }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 400; letter-spacing: 0.05em; transition: color 0.3s; }
 .nav-links a:hover { color: var(--gold); }
@@ -45,87 +26,22 @@ margin-bottom: 0.75rem;
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.mobile-overlay {
-display: none;
-position: fixed;
-inset: 0;
-background: rgba(0,0,0,0.5);
-z-index: 140;
-backdrop-filter: blur(2px);
-}
+.mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 140; backdrop-filter: blur(2px); }
 .mobile-overlay.open { display: block; }
-
-.mobile-menu {
-display: block;
-position: fixed;
-top: 0; right: -100%;
-width: 80%; max-width: 320px;
-height: 100%;
-background: var(--navy-mid);
-z-index: 150;
-flex-direction: column;
-padding: 2rem 1.5rem;
-overflow-y: auto;
-transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
-border-left: 1px solid var(--border);
-}
+.mobile-menu { display: block; position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px; height: 100%; background: var(--navy-mid); z-index: 150; flex-direction: column; padding: 2rem 1.5rem; overflow-y: auto; transition: right 0.35s cubic-bezier(0.4,0,0.2,1); border-left: 1px solid var(--border); }
 .mobile-menu.open { right: 0; }
-
-.mobile-menu-header {
-display: flex;
-align-items: center;
-gap: 0.6rem;
-padding-bottom: 1.5rem;
-margin-bottom: 0.5rem;
-border-bottom: 2px solid var(--gold);
-}
-.mobile-menu-logo {
-height: 56px;
-width: auto;
-mix-blend-mode: lighten;
-}
-.mobile-menu-sep {
-color: var(--gold);
-font-size: 1.2rem;
-font-weight: 300;
-}
-.mobile-menu-title {
-color: var(--gold);
-font-family: 'Frank Ruhl Libre', serif;
-font-size: 0.9rem;
-font-weight: 700;
-line-height: 1.4;
-}
-.mobile-menu-close {
-margin-right: auto;
-background: none;
-border: none;
-color: var(--text-muted);
-font-size: 1.5rem;
-cursor: pointer;
-padding: 0 0.25rem;
-line-height: 1;
-}
+.mobile-menu-header { display: flex; align-items: center; gap: 0.6rem; padding-bottom: 1.5rem; margin-bottom: 0.5rem; border-bottom: 2px solid var(--gold); }
+.mobile-menu-logo { height: 56px; width: auto; mix-blend-mode: lighten; }
+.mobile-menu-sep { color: var(--gold); font-size: 1.2rem; font-weight: 300; }
+.mobile-menu-title { color: var(--gold); font-family: 'Frank Ruhl Libre', serif; font-size: 0.9rem; font-weight: 700; line-height: 1.4; }
+.mobile-menu-close { margin-right: auto; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; padding: 0 0.25rem; line-height: 1; }
 .mobile-menu-close:hover { color: var(--gold); }
-
-.mobile-menu-links {
-display: flex;
-flex-direction: column;
-flex: 1;
-}
-.mobile-menu a {
-color: var(--cream);
-text-decoration: none;
-font-family: 'Heebo', sans-serif;
-font-size: 1.2rem;
-font-weight: 400;
-padding: 1.1rem 0;
-border-bottom: 1px solid rgba(201,168,76,0.12);
-transition: color 0.2s;
-text-align: right;
-}
+.mobile-menu-links { display: flex; flex-direction: column; flex: 1; }
+.mobile-menu a { color: var(--cream); text-decoration: none; font-family: 'Heebo', sans-serif; font-size: 1.2rem; font-weight: 400; padding: 1.1rem 0; border-bottom: 1px solid rgba(201,168,76,0.12); transition: color 0.2s; text-align: right; }
 .mobile-menu-links a:first-child { border-top: 1px solid rgba(201,168,76,0.12); }
 .mobile-menu a:hover { color: var(--gold); }
+
+/* HERO */
 .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 3rem 4rem; position: relative; overflow: hidden; }
 .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(42,74,107,0.4) 0%, transparent 60%); pointer-events: none; }
 .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 70% 80% at 80% 50%, black 0%, transparent 70%); pointer-events: none; }
@@ -147,6 +63,8 @@ text-align: right;
 .stat-item { text-align: center; }
 .stat-num { font-family: 'Frank Ruhl Libre', serif; font-size: 2.2rem; font-weight: 900; color: var(--white); line-height: 1; }
 .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+/* SECTIONS */
 section { padding: 6rem 3rem; }
 .container { max-width: 1100px; margin: 0 auto; }
 .section-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
@@ -163,7 +81,6 @@ section { padding: 6rem 3rem; }
 .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
 .course-card { background: rgba(26,46,69,0.5); border: 1px solid rgba(201,168,76,0.15); border-radius: 8px; padding: 1.5rem; transition: all 0.3s; cursor: default; }
 .course-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
-.course-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
 .course-name { font-family: 'Frank Ruhl Libre', serif; font-size: 1rem; font-weight: 700; color: var(--white); line-height: 1.3; }
 .formats { background: var(--navy-mid); }
 .formats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
@@ -215,6 +132,8 @@ section { padding: 6rem 3rem; }
 .whatsapp-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: #25D366; color: #fff; padding: 1rem 2rem; border-radius: 8px; margin-top: 2rem; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.3s; box-shadow: 0 4px 20px rgba(37,211,102,0.3); }
 .whatsapp-btn:hover { background: #20bd5a; box-shadow: 0 6px 30px rgba(37,211,102,0.45); transform: translateY(-2px); }
 footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-align: center; padding: 2rem 3rem; color: var(--text-muted); font-size: 0.85rem; }
+
+/* ANIMATIONS */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes checkPop {
@@ -222,34 +141,9 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
   70% { transform: scale(1.3); opacity: 1; }
   100% { transform: scale(1); opacity: 1; }
 }
-@media (max-width: 900px) {
-  nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
-  .hero-visual { display: flex; margin-top: 2.5rem; }
-  .hero-card { max-width: 100%; padding: 1.5rem; }
-  .stat-num { font-size: 1.8rem; }
-  .stat-label { font-size: 0.72rem; }
-  .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-  .formats-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
-  section { padding: 4rem 1.5rem; }
-  .price-card.featured { transform: none; }
-}
+
 /* INFINITE LINE ANIMATION */
-.engineering-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.eng-line {
-  fill: none;
-  stroke: var(--gold);
-  stroke-width: 1px;
-  opacity: 0;
-}
+.engineering-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 @keyframes lineDraw {
   0%   { stroke-dashoffset: var(--len); opacity: 0; }
   10%  { opacity: 0.18; }
@@ -257,6 +151,21 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
   80%  { stroke-dashoffset: calc(var(--len) * -1); opacity: 0.18; }
   95%  { opacity: 0; }
   100% { stroke-dashoffset: calc(var(--len) * -1); opacity: 0; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+  .hero-visual { display: none; } /* הכרטיס מוסתר במובייל */
+  .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .formats-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+  section { padding: 4rem 1.5rem; }
+  .price-card.featured { transform: none; }
+  /* האנימציה נשארת גם במובייל */
+  .engineering-bg { display: block; }
 }
 
 .toast {
@@ -313,54 +222,38 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
     <defs>
       <style>
         .eng-line { fill: none; stroke: #c9a84c; stroke-width: 1px; opacity: 0; }
-
-        /* קווים אופקיים */
-        .l1  { stroke-dasharray: 900; --len: 900; animation: lineDraw 6s ease-in-out infinite 0s; }
-        .l2  { stroke-dasharray: 700; --len: 700; animation: lineDraw 7s ease-in-out infinite 1s; }
+        .l1  { stroke-dasharray: 900;  --len: 900;  animation: lineDraw 6s ease-in-out infinite 0s; }
+        .l2  { stroke-dasharray: 700;  --len: 700;  animation: lineDraw 7s ease-in-out infinite 1s; }
         .l3  { stroke-dasharray: 1100; --len: 1100; animation: lineDraw 8s ease-in-out infinite 2s; }
-        .l4  { stroke-dasharray: 600; --len: 600; animation: lineDraw 6.5s ease-in-out infinite 3s; }
-        .l5  { stroke-dasharray: 800; --len: 800; animation: lineDraw 7.5s ease-in-out infinite 0.5s; }
-
-        /* קווים אנכיים */
-        .l6  { stroke-dasharray: 500; --len: 500; animation: lineDraw 6s ease-in-out infinite 1.5s; }
-        .l7  { stroke-dasharray: 600; --len: 600; animation: lineDraw 7s ease-in-out infinite 2.5s; }
-        .l8  { stroke-dasharray: 400; --len: 400; animation: lineDraw 5.5s ease-in-out infinite 3.5s; }
-
-        /* קווים אלכסוניים */
-        .l9  { stroke-dasharray: 800; --len: 800; animation: lineDraw 8s ease-in-out infinite 0.8s; }
-        .l10 { stroke-dasharray: 700; --len: 700; animation: lineDraw 7s ease-in-out infinite 1.8s; }
-        .l11 { stroke-dasharray: 900; --len: 900; animation: lineDraw 9s ease-in-out infinite 2.2s; }
-        .l12 { stroke-dasharray: 600; --len: 600; animation: lineDraw 6s ease-in-out infinite 4s; }
-
-        /* קווי מידה קצרים -->*/
-        .l13 { stroke-dasharray: 200; --len: 200; animation: lineDraw 4s ease-in-out infinite 1.2s; }
-        .l14 { stroke-dasharray: 200; --len: 200; animation: lineDraw 4s ease-in-out infinite 2.8s; }
-        .l15 { stroke-dasharray: 150; --len: 150; animation: lineDraw 3.5s ease-in-out infinite 3.2s; }
-        .l16 { stroke-dasharray: 300; --len: 300; animation: lineDraw 5s ease-in-out infinite 0.3s; }
-        .l17 { stroke-dasharray: 250; --len: 250; animation: lineDraw 4.5s ease-in-out infinite 1.7s; }
-        .l18 { stroke-dasharray: 350; --len: 350; animation: lineDraw 5.5s ease-in-out infinite 3.8s; }
+        .l4  { stroke-dasharray: 600;  --len: 600;  animation: lineDraw 6.5s ease-in-out infinite 3s; }
+        .l5  { stroke-dasharray: 800;  --len: 800;  animation: lineDraw 7.5s ease-in-out infinite 0.5s; }
+        .l6  { stroke-dasharray: 500;  --len: 500;  animation: lineDraw 6s ease-in-out infinite 1.5s; }
+        .l7  { stroke-dasharray: 600;  --len: 600;  animation: lineDraw 7s ease-in-out infinite 2.5s; }
+        .l8  { stroke-dasharray: 400;  --len: 400;  animation: lineDraw 5.5s ease-in-out infinite 3.5s; }
+        .l9  { stroke-dasharray: 800;  --len: 800;  animation: lineDraw 8s ease-in-out infinite 0.8s; }
+        .l10 { stroke-dasharray: 700;  --len: 700;  animation: lineDraw 7s ease-in-out infinite 1.8s; }
+        .l11 { stroke-dasharray: 900;  --len: 900;  animation: lineDraw 9s ease-in-out infinite 2.2s; }
+        .l12 { stroke-dasharray: 600;  --len: 600;  animation: lineDraw 6s ease-in-out infinite 4s; }
+        .l13 { stroke-dasharray: 200;  --len: 200;  animation: lineDraw 4s ease-in-out infinite 1.2s; }
+        .l14 { stroke-dasharray: 200;  --len: 200;  animation: lineDraw 4s ease-in-out infinite 2.8s; }
+        .l15 { stroke-dasharray: 150;  --len: 150;  animation: lineDraw 3.5s ease-in-out infinite 3.2s; }
+        .l16 { stroke-dasharray: 300;  --len: 300;  animation: lineDraw 5s ease-in-out infinite 0.3s; }
+        .l17 { stroke-dasharray: 250;  --len: 250;  animation: lineDraw 4.5s ease-in-out infinite 1.7s; }
+        .l18 { stroke-dasharray: 350;  --len: 350;  animation: lineDraw 5.5s ease-in-out infinite 3.8s; }
       </style>
     </defs>
-
-    <!-- אופקיים -->
     <line class="eng-line l1"  x1="0"    y1="150"  x2="900"  y2="150"/>
     <line class="eng-line l2"  x1="200"  y1="350"  x2="900"  y2="350"/>
     <line class="eng-line l3"  x1="0"    y1="500"  x2="1100" y2="500"/>
     <line class="eng-line l4"  x1="400"  y1="250"  x2="1000" y2="250"/>
     <line class="eng-line l5"  x1="100"  y1="600"  x2="900"  y2="600"/>
-
-    <!-- אנכיים -->
     <line class="eng-line l6"  x1="300"  y1="100"  x2="300"  y2="600"/>
     <line class="eng-line l7"  x1="700"  y1="50"   x2="700"  y2="650"/>
     <line class="eng-line l8"  x1="950"  y1="200"  x2="950"  y2="600"/>
-
-    <!-- אלכסוניים -->
     <line class="eng-line l9"  x1="0"    y1="700"  x2="700"  y2="0"/>
     <line class="eng-line l10" x1="300"  y1="700"  x2="1000" y2="0"/>
     <line class="eng-line l11" x1="500"  y1="700"  x2="1200" y2="100"/>
     <line class="eng-line l12" x1="0"    y1="400"  x2="500"  y2="0"/>
-
-    <!-- קווי מידה עם חצים קצרים -->
     <line class="eng-line l13" x1="290"  y1="100"  x2="310"  y2="100"/>
     <line class="eng-line l13" x1="290"  y1="600"  x2="310"  y2="600"/>
     <line class="eng-line l14" x1="690"  y1="50"   x2="710"  y2="50"/>
@@ -390,7 +283,7 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
     <div class="hero-card">
       <div class="hero-card-title">בקצרה</div>
       <div class="stat-grid">
-        <div class="stat-item"><div class="stat-num" data-count="8" data-prefix="+" data-suffix="">0</div><div class="stat-label">קורסי ליבה</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="8" data-prefix="+">0</div><div class="stat-label">קורסי ליבה</div></div>
         <div class="stat-item"><div class="stat-num" data-count="3">0</div><div class="stat-label">פורמטי שיעור</div></div>
         <div class="stat-item"><div class="stat-num check-anim" style="opacity:0">✓</div><div class="stat-label">בוגר הנדסת בניין</div></div>
         <div class="stat-item"><div class="stat-num check-anim" style="opacity:0">✓</div><div class="stat-label">מתרגל במוסד אקדמי</div></div>
@@ -558,29 +451,23 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
 <footer>
   <img src="logo.png" alt="OR Farfara Logo" class="footer-logo"><br>
   <p>אור פרפרה | ליווי סטודנטים להנדסה אזרחית</p>
-  <p style="margin-top: 0.5rem; font-size: 0.78rem; opacity: 0.6;">© 2026 פרפרה גרופ. כל הזכויות שמורות.</p>
+  <p style="margin-top: 0.5rem; font-size: 0.78rem; opacity: 0.6;">© 2025 אור פרפרה. כל הזכויות שמורות.</p>
 </footer>
 
 <div class="toast" id="toast">✅ תודה! אור יחזור אליך בהקדם</div>
 
 <script>
-// --- counting animation ---
 function animateCount(el) {
   const target = parseInt(el.dataset.count);
   const prefix = el.dataset.prefix || '';
-  const duration = 1200;
   const steps = 40;
-  const interval = duration / steps;
+  const interval = 1200 / steps;
   let current = 0;
   el.textContent = prefix + '0';
   const timer = setInterval(() => {
     current++;
-    const value = Math.round((current / steps) * target);
-    el.textContent = prefix + value;
-    if (current >= steps) {
-      el.textContent = prefix + target;
-      clearInterval(timer);
-    }
+    el.textContent = prefix + Math.round((current / steps) * target);
+    if (current >= steps) { el.textContent = prefix + target; clearInterval(timer); }
   }, interval);
 }
 
@@ -593,17 +480,14 @@ function animateChecks(checks) {
   });
 }
 
-// הפעל כשהכרטיס נכנס למסך
 const heroCard = document.querySelector('.hero-card');
 if (heroCard) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const counters = heroCard.querySelectorAll('[data-count]');
-        const checks = heroCard.querySelectorAll('.check-anim');
         setTimeout(() => {
-          counters.forEach(el => animateCount(el));
-          animateChecks(Array.from(checks));
+          heroCard.querySelectorAll('[data-count]').forEach(el => animateCount(el));
+          animateChecks(Array.from(heroCard.querySelectorAll('.check-anim')));
         }, 400);
         observer.disconnect();
       }
