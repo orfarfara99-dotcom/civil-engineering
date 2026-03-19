@@ -236,6 +236,29 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
   section { padding: 4rem 1.5rem; }
   .price-card.featured { transform: none; }
 }
+/* INFINITE LINE ANIMATION */
+.engineering-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.eng-line {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1px;
+  opacity: 0;
+}
+@keyframes lineDraw {
+  0%   { stroke-dashoffset: var(--len); opacity: 0; }
+  10%  { opacity: 0.18; }
+  50%  { stroke-dashoffset: 0; opacity: 0.18; }
+  80%  { stroke-dashoffset: calc(var(--len) * -1); opacity: 0.18; }
+  95%  { opacity: 0; }
+  100% { stroke-dashoffset: calc(var(--len) * -1); opacity: 0; }
+}
+
 .toast {
   position: fixed; bottom: 2rem; left: 50%;
   transform: translateX(-50%) translateY(calc(100% + 5rem));
@@ -284,6 +307,74 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
 
 <section class="hero">
   <div class="hero-grid-bg"></div>
+
+  <!-- קווים רצים בלולאה אינסופית -->
+  <svg class="engineering-bg" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <style>
+        .eng-line { fill: none; stroke: #c9a84c; stroke-width: 1px; opacity: 0; }
+
+        /* קווים אופקיים */
+        .l1  { stroke-dasharray: 900; --len: 900; animation: lineDraw 6s ease-in-out infinite 0s; }
+        .l2  { stroke-dasharray: 700; --len: 700; animation: lineDraw 7s ease-in-out infinite 1s; }
+        .l3  { stroke-dasharray: 1100; --len: 1100; animation: lineDraw 8s ease-in-out infinite 2s; }
+        .l4  { stroke-dasharray: 600; --len: 600; animation: lineDraw 6.5s ease-in-out infinite 3s; }
+        .l5  { stroke-dasharray: 800; --len: 800; animation: lineDraw 7.5s ease-in-out infinite 0.5s; }
+
+        /* קווים אנכיים */
+        .l6  { stroke-dasharray: 500; --len: 500; animation: lineDraw 6s ease-in-out infinite 1.5s; }
+        .l7  { stroke-dasharray: 600; --len: 600; animation: lineDraw 7s ease-in-out infinite 2.5s; }
+        .l8  { stroke-dasharray: 400; --len: 400; animation: lineDraw 5.5s ease-in-out infinite 3.5s; }
+
+        /* קווים אלכסוניים */
+        .l9  { stroke-dasharray: 800; --len: 800; animation: lineDraw 8s ease-in-out infinite 0.8s; }
+        .l10 { stroke-dasharray: 700; --len: 700; animation: lineDraw 7s ease-in-out infinite 1.8s; }
+        .l11 { stroke-dasharray: 900; --len: 900; animation: lineDraw 9s ease-in-out infinite 2.2s; }
+        .l12 { stroke-dasharray: 600; --len: 600; animation: lineDraw 6s ease-in-out infinite 4s; }
+
+        /* קווי מידה קצרים -->*/
+        .l13 { stroke-dasharray: 200; --len: 200; animation: lineDraw 4s ease-in-out infinite 1.2s; }
+        .l14 { stroke-dasharray: 200; --len: 200; animation: lineDraw 4s ease-in-out infinite 2.8s; }
+        .l15 { stroke-dasharray: 150; --len: 150; animation: lineDraw 3.5s ease-in-out infinite 3.2s; }
+        .l16 { stroke-dasharray: 300; --len: 300; animation: lineDraw 5s ease-in-out infinite 0.3s; }
+        .l17 { stroke-dasharray: 250; --len: 250; animation: lineDraw 4.5s ease-in-out infinite 1.7s; }
+        .l18 { stroke-dasharray: 350; --len: 350; animation: lineDraw 5.5s ease-in-out infinite 3.8s; }
+      </style>
+    </defs>
+
+    <!-- אופקיים -->
+    <line class="eng-line l1"  x1="0"    y1="150"  x2="900"  y2="150"/>
+    <line class="eng-line l2"  x1="200"  y1="350"  x2="900"  y2="350"/>
+    <line class="eng-line l3"  x1="0"    y1="500"  x2="1100" y2="500"/>
+    <line class="eng-line l4"  x1="400"  y1="250"  x2="1000" y2="250"/>
+    <line class="eng-line l5"  x1="100"  y1="600"  x2="900"  y2="600"/>
+
+    <!-- אנכיים -->
+    <line class="eng-line l6"  x1="300"  y1="100"  x2="300"  y2="600"/>
+    <line class="eng-line l7"  x1="700"  y1="50"   x2="700"  y2="650"/>
+    <line class="eng-line l8"  x1="950"  y1="200"  x2="950"  y2="600"/>
+
+    <!-- אלכסוניים -->
+    <line class="eng-line l9"  x1="0"    y1="700"  x2="700"  y2="0"/>
+    <line class="eng-line l10" x1="300"  y1="700"  x2="1000" y2="0"/>
+    <line class="eng-line l11" x1="500"  y1="700"  x2="1200" y2="100"/>
+    <line class="eng-line l12" x1="0"    y1="400"  x2="500"  y2="0"/>
+
+    <!-- קווי מידה עם חצים קצרים -->
+    <line class="eng-line l13" x1="290"  y1="100"  x2="310"  y2="100"/>
+    <line class="eng-line l13" x1="290"  y1="600"  x2="310"  y2="600"/>
+    <line class="eng-line l14" x1="690"  y1="50"   x2="710"  y2="50"/>
+    <line class="eng-line l14" x1="690"  y1="650"  x2="710"  y2="650"/>
+    <line class="eng-line l15" x1="0"    y1="145"  x2="0"    y2="155"/>
+    <line class="eng-line l15" x1="900"  y1="145"  x2="900"  y2="155"/>
+    <line class="eng-line l16" x1="100"  y1="490"  x2="100"  y2="510"/>
+    <line class="eng-line l16" x1="0"    y1="490"  x2="0"    y2="510"/>
+    <line class="eng-line l17" x1="390"  y1="240"  x2="410"  y2="240"/>
+    <line class="eng-line l17" x1="990"  y1="240"  x2="1010" y2="240"/>
+    <line class="eng-line l18" x1="940"  y1="190"  x2="960"  y2="190"/>
+    <line class="eng-line l18" x1="940"  y1="610"  x2="960"  y2="610"/>
+  </svg>
+
   <div class="hero-content">
     <div class="hero-eyebrow">הדרך שלך לתואר בהנדסה בליווי אישי ומקצועי</div>
     <h1 class="hero-title">
@@ -467,7 +558,7 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
 <footer>
   <img src="logo.png" alt="OR Farfara Logo" class="footer-logo"><br>
   <p>אור פרפרה | ליווי סטודנטים להנדסה אזרחית</p>
-  <p style="margin-top: 0.5rem; font-size: 0.78rem; opacity: 0.6;">© 2025 פרפרה גרופ. כל הזכויות שמורות.</p>
+  <p style="margin-top: 0.5rem; font-size: 0.78rem; opacity: 0.6;">© 2026 פרפרה גרופ. כל הזכויות שמורות.</p>
 </footer>
 
 <div class="toast" id="toast">✅ תודה! אור יחזור אליך בהקדם</div>
