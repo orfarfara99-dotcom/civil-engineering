@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אור פרפרה | שיעורים פרטיים להנדסת בניין</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+--navy: #0d1b2a;
+--navy-mid: #1a2e45;
+--steel: #2a4a6b;
+--gold: #c9a84c;
+--gold-light: #e8c97e;
+--cream: #f5f0e8;
+--white: #ffffff;
+--text-muted: #8a9bb0;
+--border: rgba(201,168,76,0.25);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(--navy);
+color: var(--cream);
+font-family: 'Heebo', sans-serif;
+font-weight: 300;
+line-height: 1.7;
+overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+display: flex; justify-content: space-between; align-items: center;
+padding: 1.2rem 3rem;
+background: rgba(13,27,42,0.85);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+font-family: 'Frank Ruhl Libre', serif;
+font-size: 1.25rem; font-weight: 700;
+color: var(--gold);
+letter-spacing: 0.03em;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+color: var(--text-muted); text-decoration: none;
+font-size: 0.9rem; font-weight: 400; letter-spacing: 0.05em;
+transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+/* HERO */
+.hero {
+min-height: 100vh;
+display: grid;
+grid-template-columns: 1fr 1fr;
+align-items: center;
+padding: 8rem 3rem 4rem;
+position: relative;
+overflow: hidden;
+}
+
+.hero::before {
+content: '';
+position: absolute; inset: 0;
+background:
+  radial-gradient(ellipse 60% 70% at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+  radial-gradient(ellipse 40% 60% at 10% 80%, rgba(42,74,107,0.4) 0%, transparent 60%);
+pointer-events: none;
+}
+
+.hero-grid-bg {
+position: absolute; inset: 0;
+background-image:
+  linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px);
+background-size: 60px 60px;
+mask-image: radial-gradient(ellipse 70% 80% at 80% 50%, black 0%, transparent 70%);
+pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+display: inline-flex; align-items: center; gap: 0.75rem;
+font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+color: var(--gold); font-weight: 500; margin-bottom: 1.5rem;
+opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+}
+.hero-eyebrow::before {
+content: ''; display: block;
+width: 2rem; height: 1px; background: var(--gold);
+}
+
+.hero-title {
+font-family: 'Frank Ruhl Libre', serif;
+font-size: clamp(3rem, 5vw, 5rem);
+font-weight: 900; line-height: 1.05;
+color: var(--white); margin-bottom: 1.5rem;
+opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+}
+.hero-title span { color: var(--gold); }
+
+.hero-sub {
+font-size: 1.1rem; color: var(--text-muted);
+max-width: 480px; margin-bottom: 2.5rem;
+opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+}
+
+.hero-cta {
+display: flex; gap: 1rem; flex-wrap: wrap;
+opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+}
+
+.btn-primary {
+display: inline-flex; align-items: center; gap: 0.5rem;
+background: var(--gold); color: var(--navy);
+padding: 0.9rem 2rem; border-radius: 4px;
+font-weight: 700; font-size: 0.95rem; text-decoration: none;
+letter-spacing: 0.03em; transition: all 0.3s;
+box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+}
+.btn-primary:hover {
+background: var(--gold-light);
+box-shadow: 0 6px 30px rgba(201,168,76,0.5);
+transform: translateY(-2px);
+}
+
+.btn-secondary {
+display: inline-flex; align-items: center; gap: 0.5rem;
+border: 1px solid var(--border); color: var(--cream);
+padding: 0.9rem 2rem; border-radius: 4px;
+font-weight: 400; font-size: 0.95rem; text-decoration: none;
+transition: all 0.3s;
+}
+.btn-secondary:hover {
+border-color: var(--gold); color: var(--gold);
+transform: translateY(-2px);
+}
+
+.hero-visual {
+position: relative; z-index: 1;
+display: flex; justify-content: center; align-items: center;
+opacity: 0; animation: fadeIn 1.2s 0.5s forwards;
+}
+
+.hero-card {
+background: rgba(26,46,69,0.7);
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 2.5rem;
+backdrop-filter: blur(10px);
+max-width: 360px; width: 100%;
+box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.hero-card-title {
+font-family: 'Frank Ruhl Libre', serif;
+font-size: 1.1rem; font-weight: 700;
+color: var(--gold); margin-bottom: 1.5rem;
+padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+}
+
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.stat-item { text-align: center; }
+.stat-num {
+font-family: 'Frank Ruhl Libre', serif;
+font-size: 2.2rem; font-weight: 900; color: var(--white);
+line-height: 1;
+}
+.stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+/* SECTION BASE */
+section { padding: 6rem 3rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+
+.section-label {
+font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+color: var(--gold); font-weight: 500; margin-bottom: 1rem;
+display: flex; align-items: center; gap: 0.75rem;
+}
+.section-label::before {
+content: ''; display: block;
+width: 1.5rem; height: 1px; background: var(--gold);
+}
+
+.section-title {
+font-family: 'Frank Ruhl Libre', serif;
+font-size: clamp(2rem, 3.5vw, 2.8rem);
+font-weight: 700; color: var(--white); margin-bottom: 1rem;
+}
+
+.section-desc { color: var(--text-muted); max-width: 560px; font-size: 1rem; }
+
+/* ABOUT */
+.about { background: var(--navy-mid); }
+.about-inner {
+display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+
+.about-badges {
+display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem;
+}
+.badge {
+background: rgba(201,168,76,0.1); border: 1px solid var(--border);
+color: var(--gold-light); padding: 0.4rem 1rem; border-radius: 20px;
+font-size: 0.82rem; font-weight: 500;
+}
+
+.about-highlight {
+background: rgba(201,168,76,0.06);
+border-right: 3px solid var(--gold);
+padding: 1.5rem 2rem; border-radius: 0 8px 8px 0;
+font-size: 1.05rem; color: var(--cream);
+font-style: italic; margin-top: 2rem;
+line-height: 1.8;
+}
+
+/* COURSES */
+.courses { background: var(--navy); }
+.courses-header { margin-bottom: 3rem; }
+.courses-grid {
+display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+gap: 1rem;
+}
+.course-card {
+background: rgba(26,46,69,0.5);
+border: 1px solid rgba(201,168,76,0.15);
+border-radius: 8px; padding: 1.5rem;
+transition: all 0.3s; cursor: default;
+}
+.course-card:hover {
+border-color: var(--gold);
+background: rgba(201,168,76,0.06);
+transform: translateY(-3px);
+box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.course-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+.course-name {
+font-family: 'Frank Ruhl Libre', serif;
+font-size: 1rem; font-weight: 700; color: var(--white); line-height: 1.3;
+}
+
+/* FORMATS */
+.formats { background: var(--navy-mid); }
+.formats-grid {
+display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+margin-top: 3rem;
+}
+.format-card {
+background: rgba(13,27,42,0.6);
+border: 1px solid var(--border); border-radius: 10px;
+padding: 2rem; text-align: center; transition: all 0.3s;
+}
+.format-card:hover {
+border-color: var(--gold);
+transform: translateY(-4px);
+box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+.format-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.format-title {
+font-family: 'Frank Ruhl Libre', serif;
+font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem;
+}
+.format-desc { color: var(--text-muted); font-size: 0.9rem; }
+
+/* PRICING */
+.pricing { background: var(--navy); }
+.pricing-grid {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: 1.5rem; margin-top: 3rem;
+}
+.price-card {
+background: rgba(26,46,69,0.5);
+border: 1px solid rgba(201,168,76,0.15);
+border-radius: 12px; padding: 2rem;
+position: relative; transition: all 0.3s;
+}
+.price-card.featured {
+border-color: var(--gold);
+background: rgba(201,168,76,0.06);
+transform: scale(1.03);
+}
+.price-card:hover:not(.featured) {
+border-color: rgba(201,168,76,0.4);
+transform: translateY(-4px);
+}
+.featured-badge {
+position: absolute; top: -12px; right: 50%; transform: translateX(50%);
+background: var(--gold); color: var(--navy);
+font-size: 0.75rem; font-weight: 700; padding: 0.3rem 1rem; border-radius: 20px;
+letter-spacing: 0.05em;
+}
+.price-plan {
+font-family: 'Frank Ruhl Libre', serif;
+font-size: 1.2rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem;
+}
+.price-amount {
+font-family: 'Frank Ruhl Libre', serif;
+font-size: 2.5rem; font-weight: 900; color: var(--white);
+line-height: 1; margin: 1rem 0 0.25rem;
+}
+.price-unit { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+.price-features { list-style: none; }
+.price-features li {
+display: flex; align-items: flex-start; gap: 0.6rem;
+color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.6rem;
+}
+.price-features li::before {
+content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0;
+}
+.price-note {
+text-align: center; color: var(--text-muted); font-size: 0.85rem;
+margin-top: 2rem; font-style: italic;
+}
+
+/* TESTIMONIALS */
+.testimonials { background: var(--navy-mid); }
+.testimonials-grid {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: 1.5rem; margin-top: 3rem;
+}
+.testimonial-card {
+background: rgba(13,27,42,0.6);
+border: 1px solid var(--border); border-radius: 10px;
+padding: 2rem;
+}
+.stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; }
+.testimonial-text {
+color: var(--cream); font-size: 0.95rem; line-height: 1.8;
+margin-bottom: 1.5rem; font-style: italic;
+}
+.testimonial-author { color: var(--gold); font-weight: 700; font-size: 0.9rem; }
+.testimonial-detail { color: var(--text-muted); font-size: 0.82rem; }
+
+/* CONTACT */
+.contact { background: var(--navy); }
+.contact-inner {
+display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+
+.contact-form {
+background: rgba(26,46,69,0.5);
+border: 1px solid var(--border); border-radius: 12px;
+padding: 2.5rem;
+}
+.form-title {
+font-family: 'Frank Ruhl Libre', serif;
+font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 2rem;
+}
+.form-group { margin-bottom: 1.25rem; }
+.form-group label {
+display: block; font-size: 0.82rem; font-weight: 500;
+color: var(--text-muted); margin-bottom: 0.4rem; letter-spacing: 0.05em;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+width: 100%;
+background: rgba(13,27,42,0.8);
+border: 1px solid rgba(201,168,76,0.2);
+color: var(--cream); border-radius: 6px;
+padding: 0.8rem 1rem; font-size: 0.95rem; font-family: 'Heebo', sans-serif;
+outline: none; transition: border-color 0.3s;
+direction: rtl;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--text-muted); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-group select option { background: var(--navy-mid); }
+
+.btn-submit {
+width: 100%; padding: 1rem;
+background: var(--gold); color: var(--navy);
+border: none; border-radius: 6px;
+font-size: 1rem; font-weight: 700; font-family: 'Heebo', sans-serif;
+cursor: pointer; transition: all 0.3s; margin-top: 0.5rem;
+letter-spacing: 0.03em;
+}
+.btn-submit:hover {
+background: var(--gold-light);
+box-shadow: 0 6px 25px rgba(201,168,76,0.4);
+}
+
+.contact-item {
+display: flex; align-items: center; gap: 1.25rem;
+padding: 1.25rem 0; border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+.contact-item:last-child { border-bottom: none; }
+.contact-icon {
+width: 44px; height: 44px; border-radius: 8px;
+background: rgba(201,168,76,0.1); border: 1px solid var(--border);
+display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+flex-shrink: 0;
+}
+.contact-item-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.2rem; }
+.contact-item-value { color: var(--white); font-weight: 500; font-size: 1rem; }
+.contact-item-value a { color: var(--gold); text-decoration: none; }
+.contact-item-value a:hover { text-decoration: underline; }
+
+.whatsapp-btn {
+display: inline-flex; align-items: center; gap: 0.75rem;
+background: #25D366; color: #fff;
+padding: 1rem 2rem; border-radius: 8px; margin-top: 2rem;
+text-decoration: none; font-weight: 700; font-size: 1rem;
+transition: all 0.3s; box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+}
+.whatsapp-btn:hover {
+background: #20bd5a;
+box-shadow: 0 6px 30px rgba(37,211,102,0.45);
+transform: translateY(-2px);
+}
+
+/* FOOTER */
+footer {
+background: rgba(0,0,0,0.4); border-top: 1px solid var(--border);
+text-align: center; padding: 2rem 3rem;
+color: var(--text-muted); font-size: 0.85rem;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(24px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+from { opacity: 0; }
+to   { opacity: 1; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+nav { padding: 1rem 1.5rem; }
+.nav-links { display: none; }
+.hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+.hero-visual { display: none; }
+.about-inner,
+.contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+.formats-grid,
+.pricing-grid,
+.testimonials-grid { grid-template-columns: 1fr; }
+section { padding: 4rem 1.5rem; }
+.price-card.featured { transform: none; }
+}
+
+.toast {
+position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+background: var(--gold); color: var(--navy);
+padding: 1rem 2rem; border-radius: 8px; font-weight: 700;
+transition: transform 0.4s; z-index: 9999; pointer-events: none;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">אור פרפרה</div>
+  <ul class="nav-links">
+    <li><a href="#about">עליי</a></li>
+    <li><a href="#courses">קורסים</a></li>
+    <li><a href="#pricing">מחירים</a></li>
+    <li><a href="#testimonials">המלצות</a></li>
+    <li><a href="#contact">צור קשר</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">שיעורים פרטיים להנדסת בניין</div>
+    <h1 class="hero-title">
+      לא רק לעבור<br>את המבחן —<br><span>להבין את החומר</span>
+    </h1>
+    <p class="hero-sub">
+      ליווי סטודנטים לאורך כל הסמסטר בקורסי הליבה הקשוחים ביותר בתואר,
+      עם דגש על הבנה אמיתית ויישום מעשי.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">📞 לתיאום שיעור</a>
+      <a href="#courses" class="btn-secondary">לקורסים ←</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="hero-card-title">📊 בקצרה</div>
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-num">8+</div>
+          <div class="stat-label">קורסי ליבה</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3</div>
+          <div class="stat-label">פורמטי שיעור</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">✓</div>
+          <div class="stat-label">בוגר הנדסת בניין</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">✓</div>
+          <div class="stat-label">מתרגל מכללה</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div>
+        <div class="section-label">מי אני</div>
+        <h2 class="section-title">אור פרפרה</h2>
+        <p class="section-desc">
+          בוגר הנדסת בניין ובעל ניסיון כמתרגל במכללה.
+          אני מכיר מקרוב את האתגרים שעומדים בפני סטודנטים בקורסי הליבה —
+          כי עברתי אותם בעצמי, ולאחר מכן לימדתי אותם.
+        </p>
+        <div class="about-badges">
+          <span class="badge">🎓 בוגר הנדסת בניין</span>
+          <span class="badge">🏫 מתרגל מכללה</span>
+          <span class="badge">📐 קורסי ליבה</span>
+          <span class="badge">👥 קבוצות ויחיד</span>
+        </div>
+        <div class="about-highlight">
+          "אני כאן כדי לתת לכם את כל הכלים והידע הנדרש כדי לא רק לעבור את המבחן,
+          אלא באמת להבין את החומר הנלמד וליישם אותו בשטח."
+        </div>
+      </div>
+      <div>
+        <div class="section-label">הגישה שלי</div>
+        <h2 class="section-title">למידה שעובדת</h2>
+        <p class="section-desc" style="margin-bottom:1.5rem;">
+          אני מאמין שכל סטודנט יכול להצליח כשמסבירים לו את החומר בצורה הנכונה.
+          הגישה שלי משלבת הבנה תיאורטית עם פתרון שאלות מבחן — כדי שתיכנסו לבחינה בביטחון.
+        </p>
+        <p class="section-desc">
+          הניסיון שלי כמתרגל נותן לי יתרון: אני יודע בדיוק איפה הסטודנטים נתקעים,
+          ואיך להסביר גם את הנושאים הכי מורכבים בצורה ברורה ופשוטה.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="courses" id="courses">
+  <div class="container">
+    <div class="courses-header">
+      <div class="section-label">מה מלמדים</div>
+      <h2 class="section-title">קורסי הליבה</h2>
+      <p class="section-desc">ליווי בכל קורסי התואר בהנדסת בניין, עם דגש מיוחד על הקורסים המאתגרים ביותר</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card"><div class="course-icon">⚙️</div><div class="course-name">מכניקה הנדסית</div></div>
+      <div class="course-card"><div class="course-icon">🔩</div><div class="course-name">חוזק חומרים 1+2</div></div>
+      <div class="course-card"><div class="course-icon">📐</div><div class="course-name">יציבות</div></div>
+      <div class="course-card"><div class="course-icon">🏗️</div><div class="course-name">בטון 1+2</div></div>
+      <div class="course-card"><div class="course-icon">📊</div><div class="course-name">סטטיקה 1+2</div></div>
+      <div class="course-card"><div class="course-icon">🔄</div><div class="course-name">דינמיקה</div></div>
+      <div class="course-card"><div class="course-icon">📋</div><div class="course-name">עקרי תכן</div></div>
+      <div class="course-card"><div class="course-icon">🏛️</div><div class="course-name">בניית המהנדס</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATS -->
+<section class="formats" id="formats">
+  <div class="container">
+    <div class="section-label">איך זה עובד</div>
+    <h2 class="section-title">פורמטי שיעור</h2>
+    <p class="section-desc">בחרו את הפורמט שמתאים לכם</p>
+    <div class="formats-grid">
+      <div class="format-card">
+        <div class="format-icon">👤</div>
+        <div class="format-title">שיעור יחיד</div>
+        <div class="format-desc">ליווי אישי ומותאם בדיוק לקצב שלך, לפי הצרכים הספציפיים שלך בקורס</div>
+      </div>
+      <div class="format-card">
+        <div class="format-icon">👥</div>
+        <div class="format-title">שיעור קבוצתי</div>
+        <div class="format-desc">ללמוד יחד עם חברים — חסכוני יותר, ולא פחות אפקטיבי</div>
+      </div>
+      <div class="format-card">
+        <div class="format-icon">🏃</div>
+        <div class="format-title">מרתון לפני מבחן</div>
+        <div class="format-desc">סשן אינטנסיבי לפני הבחינה: חזרה על כל החומר, פתרון שאלות ובניית ביטחון</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-label">מחירים</div>
+    <h2 class="section-title">חבילות וחוגים</h2>
+    <p class="section-desc">מחירים גמישים — ניתן לתאם הכל ישירות מול אור</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-plan">שיעור בודד</div>
+        <div class="price-amount">לפי תיאום</div>
+        <div class="price-unit">לשיעור</div>
+        <ul class="price-features">
+          <li>שיעור יחיד או קבוצתי</li>
+          <li>בנושא ספציפי</li>
+          <li>גמישות מלאה בזמנים</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="featured-badge">⭐ הכי פופולרי</div>
+        <div class="price-plan">ליווי סמסטריאלי</div>
+        <div class="price-amount">לפי תיאום</div>
+        <div class="price-unit">לסמסטר</div>
+        <ul class="price-features">
+          <li>ליווי לאורך כל הסמסטר</li>
+          <li>שיעורים שבועיים קבועים</li>
+          <li>זמינות לשאלות בין שיעורים</li>
+          <li>מרתון לפני המבחן</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-plan">מרתון בחינות</div>
+        <div class="price-amount">לפי תיאום</div>
+        <div class="price-unit">לסשן</div>
+        <ul class="price-features">
+          <li>חזרה מרוכזת על החומר</li>
+          <li>פתרון שאלות מבחנים</li>
+          <li>מתאים גם לקבוצות</li>
+        </ul>
+      </div>
+    </div>
+    <p class="price-note">💬 לקבלת מחיר מדויק — צרו קשר ישירות עם אור</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-label">מה אומרים עליי</div>
+    <h2 class="section-title">המלצות סטודנטים</h2>
+    <p class="section-desc">מה אומרים הסטודנטים שכבר עבדו עם אור</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">
+          "אחרי שנה שלמה עם ציונים גרועים בחוזק חומרים, הגעתי לאור לפני הבחינה הסופית.
+          הוא הצליח להסביר לי את כל החומר בצורה שאף אחד לא הצליח לפני. עברתי בציון מצוין!"
+        </div>
+        <div class="testimonial-author">נועם כ.</div>
+        <div class="testimonial-detail">שנה ב׳ הנדסת בניין</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">
+          "פתחנו קבוצה של 4 חברים לשיעורי סטטיקה. אור הסביר בסבלנות, נתן תרגילים מותאמים,
+          והיה זמין גם בין השיעורים. ממליצה בחום!"
+        </div>
+        <div class="testimonial-author">מיה ל.</div>
+        <div class="testimonial-detail">שנה א׳ הנדסת בניין</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">
+          "הגעתי למרתון בבטון 2 כשלא הבנתי כלום. 3 שעות עם אור ויצאתי עם הבנה מלאה.
+          הוא מסביר מצוין ויודע בדיוק מה יוצא במבחן."
+        </div>
+        <div class="testimonial-author">יוסי מ.</div>
+        <div class="testimonial-detail">שנה ג׳ הנדסת בניין</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-info-block">
+        <div class="section-label">צור קשר</div>
+        <h2 class="section-title">מוכן להתחיל?</h2>
+        <p class="section-desc">
+          לתיאום שיעור ביחיד, קבוצתי או מרתון לפני מבחן — שלחו הודעה ואחזור בהקדם.
+          שיהיה סמסטר מוצלח!
+        </p>
+        <div style="margin-top: 2.5rem;">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-item-label">טלפון / WhatsApp</div>
+              <div class="contact-item-value"><a href="tel:0526620840">052-6620840</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">👨‍🏫</div>
+            <div>
+              <div class="contact-item-label">מלמד</div>
+              <div class="contact-item-value">אור פרפרה</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🎓</div>
+            <div>
+              <div class="contact-item-label">התמחות</div>
+              <div class="contact-item-value">קורסי ליבה בהנדסת בניין</div>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/9720526620840?text=היי אור, אשמח לשמוע על שיעורים פרטיים"
+           class="whatsapp-btn" target="_blank">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          שלחו הודעה ב-WhatsApp
+        </a>
+      </div>
+
+      <div class="contact-form">
+        <div class="form-title">📬 השאירו פרטים</div>
+        <div class="form-group">
+          <label>שם מלא</label>
+          <input type="text" id="name" placeholder="השם שלך">
+        </div>
+        <div class="form-group">
+          <label>טלפון</label>
+          <input type="tel" id="phone" placeholder="050-0000000">
+        </div>
+        <div class="form-group">
+          <label>קורס / נושא</label>
+          <select id="course">
+            <option value="">בחר קורס...</option>
+            <option>מכניקה הנדסית</option>
+            <option>חוזק חומרים 1</option>
+            <option>חוזק חומרים 2</option>
+            <option>יציבות</option>
+            <option>בטון 1</option>
+            <option>בטון 2</option>
+            <option>סטטיקה 1</option>
+            <option>סטטיקה 2</option>
+            <option>דינמיקה</option>
+            <option>עקרי תכן</option>
+            <option>בניית המהנדס</option>
+            <option>אחר</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>סוג שיעור</label>
+          <select id="type">
+            <option value="">בחר...</option>
+            <option>שיעור ביחיד</option>
+            <option>שיעור קבוצתי</option>
+            <option>מרתון לפני מבחן</option>
+            <option>ליווי סמסטריאלי</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>הודעה (אופציונלי)</label>
+          <textarea id="message" placeholder="ספר/י לי קצת על מה שאתה/ת צריך/ה..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="handleSubmit()">שלח פנייה →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>אור פרפרה — שיעורים פרטיים להנדסת בניין &nbsp;|&nbsp; 052-6620840</p>
+</footer>
+
+<div class="toast" id="toast">✅ תודה! אור יחזור אליך בהקדם</div>
+
+<script>
+function handleSubmit() {
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const course = document.getElementById('course').value;
+  const type = document.getElementById('type').value;
+
+  if (!name || !phone) {
+    alert('נא למלא שם וטלפון לפחות');
+    return;
+  }
+
+  const msg = `היי אור! שמי ${name}, הטלפון שלי ${phone}.` +
+    (course ? ` מתעניין/ת בקורס: ${course}.` : '') +
+    (type ? ` סוג שיעור: ${type}.` : '') +
+    (document.getElementById('message').value ? ` ${document.getElementById('message').value}` : '');
+
+  window.open('https://wa.me/9720526620840?text=' + encodeURIComponent(msg), '_blank');
+
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+}
+</script>
+
+</body>
+</html>
