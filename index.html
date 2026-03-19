@@ -217,6 +217,11 @@ section { padding: 6rem 3rem; }
 footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-align: center; padding: 2rem 3rem; color: var(--text-muted); font-size: 0.85rem; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes checkPop {
+  0% { transform: scale(0); opacity: 0; }
+  70% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
 @media (max-width: 900px) {
   nav { padding: 1rem 1.5rem; }
   .nav-links { display: none; }
@@ -291,10 +296,10 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
     <div class="hero-card">
       <div class="hero-card-title">בקצרה</div>
       <div class="stat-grid">
-        <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">קורסי ליבה</div></div>
-        <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">פורמטי שיעור</div></div>
-        <div class="stat-item"><div class="stat-num">✓</div><div class="stat-label">בוגר הנדסת בניין</div></div>
-        <div class="stat-item"><div class="stat-num">✓</div><div class="stat-label">מתרגל במוסד אקדמי</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="8" data-prefix="+" data-suffix="">0</div><div class="stat-label">קורסי ליבה</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="3">0</div><div class="stat-label">פורמטי שיעור</div></div>
+        <div class="stat-item"><div class="stat-num check-anim" style="opacity:0">✓</div><div class="stat-label">בוגר הנדסת בניין</div></div>
+        <div class="stat-item"><div class="stat-num check-anim" style="opacity:0">✓</div><div class="stat-label">מתרגל במוסד אקדמי</div></div>
       </div>
     </div>
   </div>
@@ -464,6 +469,54 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
 <div class="toast" id="toast">✅ תודה! אור יחזור אליך בהקדם</div>
 
 <script>
+// --- counting animation ---
+function animateCount(el) {
+  const target = parseInt(el.dataset.count);
+  const prefix = el.dataset.prefix || '';
+  const duration = 1200;
+  const steps = 40;
+  const interval = duration / steps;
+  let current = 0;
+  el.textContent = prefix + '0';
+  const timer = setInterval(() => {
+    current++;
+    const value = Math.round((current / steps) * target);
+    el.textContent = prefix + value;
+    if (current >= steps) {
+      el.textContent = prefix + target;
+      clearInterval(timer);
+    }
+  }, interval);
+}
+
+function animateChecks(checks) {
+  checks.forEach((el, i) => {
+    setTimeout(() => {
+      el.style.animation = 'checkPop 0.5s forwards';
+      el.style.opacity = '1';
+    }, i * 200);
+  });
+}
+
+// הפעל כשהכרטיס נכנס למסך
+const heroCard = document.querySelector('.hero-card');
+if (heroCard) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counters = heroCard.querySelectorAll('[data-count]');
+        const checks = heroCard.querySelectorAll('.check-anim');
+        setTimeout(() => {
+          counters.forEach(el => animateCount(el));
+          animateChecks(Array.from(checks));
+        }, 400);
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  observer.observe(heroCard);
+}
+
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
   const burger = document.getElementById('hamburger');
