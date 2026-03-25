@@ -75,22 +75,11 @@ section { padding: 6rem 3rem; }
 .courses { background: var(--navy); }
 .courses-header { margin-bottom: 3rem; }
 .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
-.course-card { background: rgba(26,46,69,0.5); border: 1px solid rgba(201,168,76,0.15); border-radius: 8px; padding: 1.5rem; transition: all 0.3s; cursor: default; }
+.course-card { background: rgba(26,46,69,0.5); border: 1px solid rgba(201,168,76,0.15); border-radius: 8px; padding: 1.5rem; transition: all 0.3s; }
 .course-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
 .course-name { font-family: 'Frank Ruhl Libre', serif; font-size: 1rem; font-weight: 700; color: var(--white); line-height: 1.3; }
-.course-syllabus-hint {
-  font-size: 0.75rem;
-  color: var(--gold);
-  margin-top: 0.6rem;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.3s, transform 0.3s;
-  letter-spacing: 0.03em;
-}
-.course-card:hover .course-syllabus-hint {
-  opacity: 1;
-  transform: translateY(0);
-}
+.course-syllabus-hint { font-size: 0.75rem; color: var(--gold); margin-top: 0.6rem; opacity: 0; transform: translateY(4px); transition: opacity 0.3s, transform 0.3s; letter-spacing: 0.03em; }
+.course-card:hover .course-syllabus-hint { opacity: 1; transform: translateY(0); }
 .formats { background: var(--navy-mid); }
 .formats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
 .format-card { background: rgba(13,27,42,0.6); border: 1px solid var(--border); border-radius: 10px; padding: 2rem; text-align: center; transition: all 0.3s; }
@@ -166,95 +155,20 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
   .engineering-bg { display: block; }
 }
 /* MODAL */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  z-index: 500;
-  backdrop-filter: blur(4px);
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-}
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 500; backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 1.5rem; }
 .modal-overlay.open { display: flex; }
-.modal {
-  background: var(--navy-mid);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 2.5rem;
-  max-width: 520px;
-  width: 100%;
-  position: relative;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-  max-height: 85vh;
-  overflow-y: auto;
-}
-.modal-close {
-  position: absolute;
-  top: 1.2rem;
-  left: 1.2rem;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 1.4rem;
-  cursor: pointer;
-  line-height: 1;
-  transition: color 0.2s;
-}
+.modal { background: var(--navy-mid); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem; max-width: 520px; width: 100%; position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.6); max-height: 85vh; overflow-y: auto; }
+.modal-close { position: absolute; top: 1.2rem; left: 1.2rem; background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; line-height: 1; transition: color 0.2s; }
 .modal-close:hover { color: var(--gold); }
 .modal-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-.modal-title {
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 0.4rem;
-}
-.modal-subtitle {
-  font-size: 0.82rem;
-  color: var(--gold);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
-}
+.modal-title { font-family: 'Frank Ruhl Libre', serif; font-size: 1.6rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+.modal-subtitle { font-size: 0.82rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
 .modal-topics { list-style: none; margin-bottom: 2rem; }
-.modal-topics li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid rgba(201,168,76,0.08);
-  color: var(--cream);
-  font-size: 0.95rem;
-}
+.modal-topics li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(201,168,76,0.08); color: var(--cream); font-size: 0.95rem; }
 .modal-topics li:last-child { border-bottom: none; }
-.modal-topics li::before {
-  content: '◈';
-  color: var(--gold);
-  font-size: 0.7rem;
-  margin-top: 0.35rem;
-  flex-shrink: 0;
-}
-.modal-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  background: #25D366;
-  color: #fff;
-  padding: 0.9rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: all 0.3s;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.3);
-}
+.modal-topics li::before { content: '◈'; color: var(--gold); font-size: 0.7rem; margin-top: 0.35rem; flex-shrink: 0; }
+.modal-cta { display: flex; align-items: center; justify-content: center; gap: 0.6rem; background: #25D366; color: #fff; padding: 0.9rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; box-shadow: 0 4px 20px rgba(37,211,102,0.3); }
 .modal-cta:hover { background: #20bd5a; transform: translateY(-2px); }
-
 .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(calc(100% + 5rem)); background: var(--gold); color: var(--navy); padding: 1rem 2rem; border-radius: 8px; font-weight: 700; transition: transform 0.4s; z-index: 9999; pointer-events: none; }
 .toast.show { transform: translateX(-50%) translateY(0); }
 </style>
@@ -284,7 +198,7 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
     <img src="logo.png" alt="OR Farfara Logo" class="mobile-menu-logo">
     <span class="mobile-menu-sep">|</span>
     <span class="mobile-menu-title">ליווי סטודנטים<br>להנדסה אזרחית</span>
-    <button class="mobile-menu-close" onclick="closeMenu()">&#x2715;</button>
+    <button class="mobile-menu-close" onclick="closeMenu()">✕</button>
   </div>
   <div class="mobile-menu-links">
     <a href="#about" onclick="closeMenu()">עליי</a>
@@ -321,25 +235,14 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
         .l17 { stroke-dasharray: 250;  --len: 250;  animation: lineDraw 4.5s ease-in-out infinite 1.7s; }
         .l18 { stroke-dasharray: 350;  --len: 350;  animation: lineDraw 5.5s ease-in-out infinite 3.8s; }
       </style>
-      <!--
-        הכרטיס: x=55..535, y=108..595
-        הטקסט:  x=590..1145, y=108..595
-        מותרים: פס עליון, פס תחתון, שוליים שמאליים, פס אמצעי, שוליים ימניים
-      -->
       <clipPath id="textAvoid">
-        <!-- פס עליון — מעל הכרטיס והטקסט -->
         <rect x="0"    y="0"   width="1200" height="108"/>
-        <!-- פס תחתון — מתחת לכרטיס והטקסט -->
         <rect x="0"    y="595" width="1200" height="105"/>
-        <!-- שוליים שמאליים צרים (מחוץ לכרטיס) -->
         <rect x="0"    y="108" width="55"   height="487"/>
-        <!-- פס אמצעי — בין הכרטיס לטקסט -->
         <rect x="535"  y="108" width="55"   height="487"/>
-        <!-- שוליים ימניים צרים (מחוץ לטקסט) -->
         <rect x="1145" y="108" width="55"   height="487"/>
       </clipPath>
     </defs>
-
     <g clip-path="url(#textAvoid)">
       <line class="eng-line l1"  x1="0"    y1="150"  x2="900"  y2="150"/>
       <line class="eng-line l2"  x1="200"  y1="350"  x2="900"  y2="350"/>
@@ -360,11 +263,8 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
       <line class="eng-line l15" x1="0"    y1="145"  x2="0"    y2="155"/>
       <line class="eng-line l15" x1="900"  y1="145"  x2="900"  y2="155"/>
       <line class="eng-line l16" x1="100"  y1="490"  x2="100"  y2="510"/>
-      <line class="eng-line l16" x1="0"    y1="490"  x2="0"    y2="510"/>
       <line class="eng-line l17" x1="390"  y1="240"  x2="410"  y2="240"/>
-      <line class="eng-line l17" x1="990"  y1="240"  x2="1010" y2="240"/>
       <line class="eng-line l18" x1="940"  y1="190"  x2="960"  y2="190"/>
-      <line class="eng-line l18" x1="940"  y1="610"  x2="960"  y2="610"/>
     </g>
   </svg>
 
@@ -375,8 +275,8 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
     </h1>
     <p class="hero-sub">ליווי סטודנטים לאורך כל הסמסטר בקורסי הליבה המאתגרים ביותר בתואר, עם דגש על הבנה אמיתית ויישום מעשי.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn-primary">לתיאום שיעור &#x1F4DE;</a>
-      <a href="#courses" class="btn-secondary">לקורסים &#x2190;</a>
+      <a href="#contact" class="btn-primary">לתיאום שיעור 📞</a>
+      <a href="#courses" class="btn-secondary">לקורסים ←</a>
     </div>
   </div>
   <div class="hero-visual">
@@ -385,8 +285,8 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
       <div class="stat-grid">
         <div class="stat-item"><div class="stat-num" data-count="8" data-prefix="+">0</div><div class="stat-label">קורסי ליבה</div></div>
         <div class="stat-item"><div class="stat-num" data-count="3">0</div><div class="stat-label">פורמטי שיעור</div></div>
-        <div class="stat-item"><div class="stat-num check-anim" style="opacity:0">&#x2713;</div><div class="stat-label">בוגר הנדסת בניין</div></div>
-        <div class="stat-item"><div class="stat-num check-anim" style="opacity:0">&#x2713;</div><div class="stat-label">מתרגל במוסד אקדמי</div></div>
+        <div class="stat-item"><div class="stat-num check-anim" style="opacity:0">✓</div><div class="stat-label">בוגר הנדסת בניין</div></div>
+        <div class="stat-item"><div class="stat-num check-anim" style="opacity:0">✓</div><div class="stat-label">מתרגל במוסד אקדמי</div></div>
       </div>
     </div>
   </div>
@@ -400,8 +300,8 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
         <h2 class="section-title">אור פרפרה</h2>
         <p class="section-desc">בוגר הנדסת בניין ובעל ניסיון כמתרגל במכללה. אני מכיר מקרוב את האתגרים שעומדים בפני סטודנטים בקורסי הליבה כי עברתי אותם בעצמי, ולאחר מכן לימדתי אותם.</p>
         <div class="about-badges">
-          <span class="badge">&#x1F393; בוגר הנדסת בניין</span>
-          <span class="badge">&#x1F4D0; מתרגל במוסד אקדמי</span>
+          <span class="badge">🎓 בוגר הנדסת בניין</span>
+          <span class="badge">📐 מתרגל במוסד אקדמי</span>
         </div>
         <div class="about-highlight">"אני כאן כדי לתת לכם את כל הכלים והידע הנדרש כדי לא רק לעבור את המבחן, אלא באמת להבין את החומר הנלמד וליישם אותו בשטח."</div>
       </div>
@@ -423,24 +323,18 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
       <p class="section-desc">קורסי הליבה</p>
     </div>
     <div class="courses-grid">
-      <div class="course-card" onclick="openModal('mechanics')" style="cursor:pointer">
-        <div class="course-name">מכניקה הנדסית</div>
-        <div class="course-syllabus-hint"> צפייה בסילבוס ←</div>
-      </div>
-      <div class="course-card" onclick="openModal('strength1')" style="cursor:pointer">
-        <div class="course-name">חוזק חומרים 1</div>
-        <div class="course-syllabus-hint"> צפייה בסילבוס ←</div>
-      </div>
-      <div class="course-card" onclick="openModal('strength2')" style="cursor:pointer"><div class="course-name">חוזק חומרים 2</div><div class="course-syllabus-hint"> צפייה בסילבוס ←</div></div>
-      <div class="course-card" onclick="openModal('stability')" style="cursor:pointer"><div class="course-name">יציבות</div><div class="course-syllabus-hint"> צפייה בסילבוס ←</div></div>
-      <div class="course-card" onclick="openModal('concrete1')" style="cursor:pointer"><div class="course-name">מבני בטון 1</div><div class="course-syllabus-hint"> צפייה בסילבוס ←</div></div>
-      <div class="course-card" onclick="openModal('concrete2')" style="cursor:pointer"><div class="course-name">מבני בטון 2</div><div class="course-syllabus-hint"> צפייה בסילבוס ←</div></div>
-      <div class="course-card" onclick="openModal('statics1')" style="cursor:pointer"><div class="course-name">סטטיקת מבנים 1</div><div class="course-syllabus-hint"> צפייה בסילבוס ←</div></div>
-      <div class="course-card" onclick="openModal('statics2')" style="cursor:pointer"><div class="course-name">סטטיקת מבנים 2</div><div class="course-syllabus-hint"> צפייה בסילבוס ←</div></div>
-      <div class="course-card" onclick="openModal('dynamics')" style="cursor:pointer"><div class="course-name">דינמיקת מבנים</div><div class="course-syllabus-hint"> צפייה בסילבוס ←</div></div>
-      <div class="course-card" onclick="openModal('designprinciples')" style="cursor:pointer"><div class="course-name">עקרי תכן מבנים</div><div class="course-syllabus-hint"> צפייה בסילבוס ←</div></div>
-      <div class="course-card" onclick="openModal('engineering')" style="cursor:pointer"><div class="course-name">בניית המהנדס</div><div class="course-syllabus-hint"> צפייה בסילבוס ←</div></div>
-      <div class="course-card" onclick="openModal('finalproject')" style="cursor:pointer"><div class="course-name">ליווי פרוייקט גמר</div><div class="course-syllabus-hint"> צפייה בסילבוס ←</div></div>
+      <div class="course-card" onclick="openModal('mechanics')" style="cursor:pointer"><div class="course-name">מכניקה הנדסית</div><div class="course-syllabus-hint">📋 צפייה בסילבוס ←</div></div>
+      <div class="course-card" onclick="openModal('strength1')" style="cursor:pointer"><div class="course-name">חוזק חומרים 1</div><div class="course-syllabus-hint">📋 צפייה בסילבוס ←</div></div>
+      <div class="course-card" onclick="openModal('strength2')" style="cursor:pointer"><div class="course-name">חוזק חומרים 2</div><div class="course-syllabus-hint">📋 צפייה בסילבוס ←</div></div>
+      <div class="course-card" onclick="openModal('stability')" style="cursor:pointer"><div class="course-name">יציבות</div><div class="course-syllabus-hint">📋 צפייה בסילבוס ←</div></div>
+      <div class="course-card" onclick="openModal('concrete1')" style="cursor:pointer"><div class="course-name">מבני בטון 1</div><div class="course-syllabus-hint">📋 צפייה בסילבוס ←</div></div>
+      <div class="course-card" onclick="openModal('concrete2')" style="cursor:pointer"><div class="course-name">מבני בטון 2</div><div class="course-syllabus-hint">📋 צפייה בסילבוס ←</div></div>
+      <div class="course-card" onclick="openModal('statics1')" style="cursor:pointer"><div class="course-name">סטטיקת מבנים 1</div><div class="course-syllabus-hint">📋 צפייה בסילבוס ←</div></div>
+      <div class="course-card" onclick="openModal('statics2')" style="cursor:pointer"><div class="course-name">סטטיקת מבנים 2</div><div class="course-syllabus-hint">📋 צפייה בסילבוס ←</div></div>
+      <div class="course-card" onclick="openModal('dynamics')" style="cursor:pointer"><div class="course-name">דינמיקת מבנים</div><div class="course-syllabus-hint">📋 צפייה בסילבוס ←</div></div>
+      <div class="course-card" onclick="openModal('designprinciples')" style="cursor:pointer"><div class="course-name">עקרי תכן מבנים</div><div class="course-syllabus-hint">📋 צפייה בסילבוס ←</div></div>
+      <div class="course-card" onclick="openModal('engineering')" style="cursor:pointer"><div class="course-name">בניית המהנדס</div><div class="course-syllabus-hint">📋 צפייה בסילבוס ←</div></div>
+      <div class="course-card" onclick="openModal('finalproject')" style="cursor:pointer"><div class="course-name">ליווי פרוייקט גמר</div><div class="course-syllabus-hint">📋 צפייה בסילבוס ←</div></div>
     </div>
   </div>
 </section>
@@ -451,9 +345,9 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
     <h2 class="section-title">פורמטי שיעור</h2>
     <p class="section-desc">בחרו את הפורמט שמתאים לכם</p>
     <div class="formats-grid">
-      <div class="format-card"><div class="format-icon">&#x1F464;</div><div class="format-title">שיעור יחיד</div><div class="format-desc">ליווי אישי ומותאם בדיוק לקצב שלך, לפי הצרכים הספציפיים שלך בקורס</div></div>
-      <div class="format-card"><div class="format-icon">&#x1F465;</div><div class="format-title">שיעור קבוצתי</div><div class="format-desc">ללמוד יחד עם חברים חסכוני יותר, ולא פחות אפקטיבי</div></div>
-      <div class="format-card"><div class="format-icon">&#x1F3C3;</div><div class="format-title">מרתון לפני מבחן</div><div class="format-desc">סשן אינטנסיבי לפני הבחינה: חזרה על כל החומר ופתרון שאלות בחינה</div></div>
+      <div class="format-card"><div class="format-icon">👤</div><div class="format-title">שיעור יחיד</div><div class="format-desc">ליווי אישי ומותאם בדיוק לקצב שלך, לפי הצרכים הספציפיים שלך בקורס</div></div>
+      <div class="format-card"><div class="format-icon">👥</div><div class="format-title">שיעור קבוצתי</div><div class="format-desc">ללמוד יחד עם חברים — חסכוני יותר, ולא פחות אפקטיבי</div></div>
+      <div class="format-card"><div class="format-icon">🏃</div><div class="format-title">מרתון לפני מבחן</div><div class="format-desc">סשן אינטנסיבי לפני הבחינה: חזרה על כל החומר ופתרון שאלות בחינה</div></div>
     </div>
   </div>
 </section>
@@ -471,7 +365,7 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
         <ul class="price-features"><li>שיעור יחיד או קבוצתי</li><li>בנושא ספציפי</li><li>גמישות מלאה בזמנים</li></ul>
       </div>
       <div class="price-card featured">
-        <div class="featured-badge">&#x2B50; הכי פופולרי</div>
+        <div class="featured-badge">⭐ הכי פופולרי</div>
         <div class="price-plan">ליווי סמסטריאלי</div>
         <div class="price-amount">לפי תיאום</div>
         <div class="price-unit">לסמסטר</div>
@@ -484,7 +378,7 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
         <ul class="price-features"><li>חזרה מרוכזת על החומר</li><li>פתרון שאלות מבחנים</li><li>מתאים במיוחד לקבוצות</li></ul>
       </div>
     </div>
-    <p class="price-note">&#x1F4AC; לקבלת מחיר מדויק צרו קשר ישירות עם אור</p>
+    <p class="price-note">💬 לקבלת מחיר מדויק — צרו קשר ישירות עם אור</p>
   </div>
 </section>
 
@@ -493,9 +387,9 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
     <div class="section-label">המלצות סטודנטים</div>
     <h2 class="section-title">סטודנטים מספרים</h2>
     <div class="testimonials-grid">
-      <div class="testimonial-card"><div class="stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><div class="testimonial-text">"אחרי שנה שלמה עם ציונים גרועים בחוזק חומרים, הגעתי לאור לפני הבחינה הסופית. הוא הצליח להסביר לי את כל החומר בצורה שאף אחד לא הצליח לפני. עברתי בציון מצוין!"</div><div class="testimonial-author">נועם כ.</div><div class="testimonial-detail">שנה א' הנדסת בניין</div></div>
-      <div class="testimonial-card"><div class="stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><div class="testimonial-text">"פתחנו קבוצה של 4 חברים לשיעורי סטטיקה. אור הסביר בסבלנות, נתן תרגילים מותאמים, והיה זמין גם בין השיעורים. ממליצה בחום!"</div><div class="testimonial-author">מיה ל.</div><div class="testimonial-detail">שנה ב' הנדסת בניין</div></div>
-      <div class="testimonial-card"><div class="stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><div class="testimonial-text">"הגעתי למרתון בבטון 2 כשלא הבנתי כלום. 3 שעות עם אור ויצאתי עם הבנה מלאה. הוא מסביר מצוין ויודע בדיוק מה יוצא במבחן."</div><div class="testimonial-author">יוסי מ.</div><div class="testimonial-detail">שנה ג' הנדסת בניין</div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><div class="testimonial-text">"אחרי שנה שלמה עם ציונים גרועים בחוזק חומרים, הגעתי לאור לפני הבחינה הסופית. הוא הצליח להסביר לי את כל החומר בצורה שאף אחד לא הצליח לפני. עברתי בציון מצוין!"</div><div class="testimonial-author">נועם כ.</div><div class="testimonial-detail">שנה א' הנדסת בניין</div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><div class="testimonial-text">"פתחנו קבוצה של 4 חברים לשיעורי סטטיקה. אור הסביר בסבלנות, נתן תרגילים מותאמים, והיה זמין גם בין השיעורים. ממליצה בחום!"</div><div class="testimonial-author">מיה ל.</div><div class="testimonial-detail">שנה ב' הנדסת בניין</div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><div class="testimonial-text">"הגעתי למרתון בבטון 2 כשלא הבנתי כלום. 3 שעות עם אור ויצאתי עם הבנה מלאה. הוא מסביר מצוין ויודע בדיוק מה יוצא במבחן."</div><div class="testimonial-author">יוסי מ.</div><div class="testimonial-detail">שנה ג' הנדסת בניין</div></div>
     </div>
   </div>
 </section>
@@ -506,28 +400,28 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
       <div class="contact-info-block">
         <div class="section-label">צור קשר</div>
         <h2 class="section-title">מוכן להתחיל?</h2>
-        <p class="section-desc">לתיאום ליווי שלחו הודעה ואחזור בהקדם. סמסטר מוצלח!</p>
+        <p class="section-desc">לתיאום ליווי — שלחו הודעה ואחזור בהקדם. סמסטר מוצלח!</p>
         <div style="margin-top: 2.5rem;">
           <div class="contact-item">
-            <div class="contact-icon">&#x1F4DE;</div>
+            <div class="contact-icon">📞</div>
             <div><div class="contact-item-label">טלפון / WhatsApp</div><div class="contact-item-value"><a href="tel:0526620840">052-6620840</a></div></div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">&#x1F468;&#x200D;&#x1F3EB;</div>
+            <div class="contact-icon">👨‍🏫</div>
             <div><div class="contact-item-value">אור פרפרה</div></div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">&#x1F393;</div>
+            <div class="contact-icon">🎓</div>
             <div><div class="contact-item-label">התמחות</div><div class="contact-item-value">ליווי סטודנטים להנדסה אזרחית</div></div>
           </div>
         </div>
-        <a href="https://wa.me/9720526620840?text=%D7%94%D7%99%D7%99%20%D7%90%D7%95%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%A9%D7%99%D7%A2%D7%95%D7%A8%D7%99%D7%9D%20%D7%A4%D7%A8%D7%98%D7%99%D7%99%D7%9D" class="whatsapp-btn" target="_blank">
+        <a href="https://wa.me/9720526620840?text=היי אור, אשמח לשמוע על שיעורים פרטיים" class="whatsapp-btn" target="_blank">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           שלחו הודעה ב-WhatsApp
         </a>
       </div>
       <div class="contact-form">
-        <div class="form-title">&#x1F4EC; השאירו פרטים</div>
+        <div class="form-title">📬 השאירו פרטים</div>
         <div class="form-group"><label>שם מלא</label><input type="text" id="name" placeholder="השם שלך"></div>
         <div class="form-group"><label>טלפון</label><input type="tel" id="phone" placeholder="050-0000000"></div>
         <div class="form-group">
@@ -548,7 +442,7 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
           </select>
         </div>
         <div class="form-group"><label>הודעה (אופציונלי)</label><textarea id="message" placeholder="ספר/י לי קצת על מה שאתה/ת צריך/ה..."></textarea></div>
-        <button class="btn-submit" onclick="handleSubmit()">שלח פנייה &#x2192;</button>
+        <button class="btn-submit" onclick="handleSubmit()">שלח פנייה →</button>
       </div>
     </div>
   </div>
@@ -557,13 +451,13 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
 <footer>
   <img src="logo.png" alt="OR Farfara Logo" class="footer-logo"><br>
   <p>אינג' אור פרפרה | ליווי סטודנטים להנדסה אזרחית</p>
-  <p style="margin-top: 0.5rem; font-size: 0.78rem; opacity: 0.6;">&#x00A9; 2025 פרפרה גרופ. כל הזכויות שמורות.</p>
+  <p style="margin-top: 0.5rem; font-size: 0.78rem; opacity: 0.6;">© 2025 פרפרה גרופ. כל הזכויות שמורות.</p>
 </footer>
 
-<!-- MODALS -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modalContent">
-    <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-icon" id="modalIcon"></div>
     <div class="modal-title" id="modalTitle"></div>
     <div class="modal-subtitle">סילבוס הקורס</div>
@@ -575,198 +469,68 @@ footer { background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); text-
   </div>
 </div>
 
-<div class="toast" id="toast">&#x2705; תודה! אור יחזור אליך בהקדם</div>
+<div class="toast" id="toast">✅ תודה! אור יחזור אליך בהקדם</div>
 
 <script>
-// --- נתוני קורסים ---
-const courses = {
+var courses = {
   mechanics: {
-    title: 'מכניקה הנדסית',
-    topics: [
-      'מושגי יסוד — מערכות כוחות וממומנטים',
-      'שיווי משקל של גוף קשיח בדו-מימד',
-      'שיווי משקל של מערכת גופים, כוחות בחיבורים',
-      'שווי משקל של גופים קשיחים ומערכות גופים בתלת-מימד',
-      'פתרון מסבכים',
-      'שקול של עומסים מפורסים, מרכז הכובד',
-      'חישוב וניתוח כוחות פנימיים בקורות',
-      'חישוב וניתוח כוחות פנימיים במסגרות דו ותלת מימדיות',
-      'כוחות פנימיים בכבלים',
-      'כוחות פנימיים במבנים שונים',
-    ]
+    icon: '⚙️', title: 'מכניקה הנדסית',
+    topics: ['מושגי יסוד — מערכות כוחות וממומנטים','שיווי משקל של גוף קשיח בדו-מימד','שיווי משקל של מערכת גופים, כוחות בחיבורים','שווי משקל של גופים קשיחים ומערכות גופים בתלת-מימד','פתרון מסבכים','שקול של עומסים מפורסים, מרכז הכובד','חישוב וניתוח כוחות פנימיים בקורות','חישוב וניתוח כוחות פנימיים במסגרות דו ותלת מימדיות','כוחות פנימיים בכבלים','כוחות פנימיים במבנים שונים']
   },
   strength1: {
-    title: 'חוזק חומרים 1',
-    topics: [
-      'העמסה צירית',
-      'פיתול',
-      'מומנט אינרציה',
-      'כפיפה סימטרית',
-      'גזירה תוך כדי כפיפה',
-      'גזירה בחתך דק דופן — מרכז הגזירה',
-      'טרנספורמציה של מאמץ — קריטריוני הכשל',
-    ]
+    icon: '🔩', title: 'חוזק חומרים 1',
+    topics: ['העמסה צירית','פיתול','מומנט אינרציה','כפיפה סימטרית','גזירה תוך כדי כפיפה','גזירה בחתך דק דופן — מרכז הגזירה','טרנספורמציה של מאמץ — קריטריוני הכשל']
   },
   strength2: {
-    title: 'חוזק חומרים 2',
-    topics: [
-      'משוואת הקו האלסטי של קורות',
-      'שימוש בטבלאות שקיעות',
-      'קורות לא מסוימות סטטית',
-      'משוואת שלושת המומנטים (קלפירון)',
-      'פתרון מבנים לא מסויימים סטטית בכפיפה',
-      'עקרון קורה צמודה',
-      'כפיפה משופעת',
-      'כפיפה בחתכים לא הומוגניים',
-      'כפיפה משופעת של חתכים לא הומוגניים',
-      'התנהגות פלסטית של חתכים',
-      'התנהגות פלסטית של מבני מוטות',
-      'התנהגות פלסטית של מבנים בכפיפה',
-    ]
+    icon: '🔩', title: 'חוזק חומרים 2',
+    topics: ['משוואת הקו האלסטי של קורות','שימוש בטבלאות שקיעות','קורות לא מסוימות סטטית','משוואת שלושת המומנטים (קלפירון)','פתרון מבנים לא מסויימים סטטית בכפיפה','עקרון קורה צמודה','כפיפה משופעת','כפיפה בחתכים לא הומוגניים','כפיפה משופעת של חתכים לא הומוגניים','התנהגות פלסטית של חתכים','התנהגות פלסטית של מבני מוטות','התנהגות פלסטית של מבנים בכפיפה']
   },
   stability: {
-    title: 'יציבות',
-    topics: [
-      'קורות עמוד — מקרים בסיסיים',
-      'קורות עמוד, שימוש במשוואת קלפירון',
-      'קריסת מוטות האלסטי — מקרי קריסה של אויילר',
-      'קריסת מוטות בתחום הפלסטי ותכנון מוטות לקריסה',
-      'קריסת מסגרות, שימוש במשוואת קלפירון',
-      'פיתוח משוואת הקריסה',
-      'חישוב עומס קריסה משיקולי אנרגיה — חישוב מקורב של עומס קריטי',
-      'מודלים לקריסה: חישוב עומס קריסה משיקולי שיווי משקל ואנרגיה',
-      'מקרים מיוחדים בקריסת מוטות',
-      'קריסה בכפיפה ופיתול',
-      'קריסה צידית',
-      'קריסת פלטות',
-    ]
+    icon: '📐', title: 'יציבות',
+    topics: ['קורות עמוד — מקרים בסיסיים','קורות עמוד, שימוש במשוואת קלפירון','קריסת מוטות האלסטי — מקרי קריסה של אויילר','קריסת מוטות בתחום הפלסטי ותכנון מוטות לקריסה','קריסת מסגרות, שימוש במשוואת קלפירון','פיתוח משוואת הקריסה','חישוב עומס קריסה משיקולי אנרגיה — חישוב מקורב של עומס קריטי','מודלים לקריסה: חישוב עומס קריסה משיקולי שיווי משקל ואנרגיה','מקרים מיוחדים בקריסת מוטות','קריסה בכפיפה ופיתול','קריסה צידית','קריסת פלטות']
   },
   concrete1: {
-    title: 'מבני בטון 1',
-    topics: [
-      'תכונות הבטון והפלדה בתכן מבנים מבטון מזוין',
-      'עקרונות התכן, עומסי וחוזקי התכן, מצבי העמסה מסוכנים ומעטפת',
-      'מצב גבולי של שרות — הגבלת הסדיקה והכפף',
-      'שלבי התכן של תקרה וקורה, חישוב סטטי, הפחתת מומנטים אלסטית בסמך ביניים',
-      'מצב גבולי של הרס — חישוב חתכים בכפיפה',
-      'מעטפת כוחות מתיחה, דרישות מינימום לזיון תקרות וקורות',
-      'עיגון וחפיה',
-      'כפיפה ושלבי תכן, כיסוי הדרישות לזיון',
-      'תכן לגזירה',
-      'תכן לגזירה, תכן קורות מבטון מזוין',
-      'חישוב פלסטי, פרק פלסטי, משיכות, רדיסטריבוציה וחישוב מקורב',
-      'תקרת צלעות',
-    ]
+    icon: '🏗️', title: 'מבני בטון 1',
+    topics: ['תכונות הבטון והפלדה בתכן מבנים מבטון מזוין','עקרונות התכן, עומסי וחוזקי התכן, מצבי העמסה מסוכנים ומעטפת','מצב גבולי של שרות — הגבלת הסדיקה והכפף','שלבי התכן של תקרה וקורה, חישוב סטטי, הפחתת מומנטים אלסטית','מצב גבולי של הרס — חישוב חתכים בכפיפה','מעטפת כוחות מתיחה, דרישות מינימום לזיון תקרות וקורות','עיגון וחפיה','כפיפה ושלבי תכן, כיסוי הדרישות לזיון','תכן לגזירה','תכן לגזירה, תכן קורות מבטון מזוין','חישוב פלסטי, פרק פלסטי, משיכות ורדיסטריבוציה','תקרת צלעות']
   },
   concrete2: {
-    title: 'מבני בטון 2',
-    topics: [
-      'חישוב אלסטי של תקרה מצולבת — משטחי מומנטים ומשטח שקיעות',
-      'חישוב אלסטי — שיטות מקורבות,
-      'חישוב אלסטי — תקרות נמשכות - שיטת קרוס',
-      'סופרפוזיציה, חישוב פלסטי: שיטת קווי השבר',
-      'חישוב פלסטי: שיטת הרצועות של הילרבורג',
-      'חישוב חתכים בלחיצה אקסצנטרית',
-      'תכן רכיבים לחוצים',
-      'תכן רכיבים מבטון מזוין מוטרחים בפיתול',
-      'תקרה מקשית שטוחה (ללא קורות)',
-      'תקרות צלעות וערוגות הנסמכות על קורות, תקרת ערוגות שטוחה וקורות בעובי תקרה',
-      'מבוא לשיטת Strut & Tie לתכן אזורי ריכוז מאמצים במבני בטון',
-    ]
+    icon: '🏗️', title: 'מבני בטון 2',
+    topics: ['חישוב אלסטי של תקרה מצולבת — משטחי מומנטים ומשטח שקיעות','חישוב אלסטי — שיטות מקורבות','חישוב אלסטי — תקרות נמשכות, שיטת קרוס','סופרפוזיציה, חישוב פלסטי: שיטת קווי השבר','חישוב פלסטי: שיטת הרצועות של הילרבורג','חישוב חתכים בלחיצה אקסצנטרית','תכן רכיבים לחוצים','תכן רכיבים מבטון מזוין מוטרחים בפיתול','תקרה מקשית שטוחה (ללא קורות)','תקרות צלעות וערוגות הנסמכות על קורות','מבוא לשיטת Strut & Tie לתכן אזורי ריכוז מאמצים במבני בטון']
   },
   statics1: {
-    title: 'סטטיקת מבנים 1',
-    topics: [
-      'חוק שימור אנרגיה, עבודה וירטואלית לחישוב ריאקציות, כוחות ומומנטים',
-      'קווי השפעה לקורות מסוימות סטטית לפי עקרון ברסלאו-מילר',
-      'קווי השפעה לקורות רוחב ומסבכים מסוימים סטטית',
-      'סיומת סטטית ויציבות של מבנים, סימטריה ואנטי-סימטריה במבנים',
-      'חישוב דפורמציות אלסטיות בעזרת עיקרון עבודה וירטואלית',
-      'עבודה וירטואלית: קורות ומסגרות לא מסוימות סטטית',
-      'שיטת הגמישות: מטריצת גמישות, פתרון קורות ומסגרות לא מסוימות סטטית',
-      'שיטת הגמישות: השפעת אי-התאמות, הפרשי טמפרטורה, שקיעת סמכים ופתרון מסבכים',
-      'שיטת התחלקות המומנטים: פתרון קורות',
-      'שיטת התחלקות המומנטים: פתרון מסגרות מוחזקות',
-    ]
+    icon: '📊', title: 'סטטיקת מבנים 1',
+    topics: ['חוק שימור אנרגיה, עבודה וירטואלית לחישוב ריאקציות, כוחות ומומנטים','קווי השפעה לקורות מסוימות סטטית לפי עקרון ברסלאו-מילר','קווי השפעה לקורות רוחב ומסבכים מסוימים סטטית','סיומת סטטית ויציבות של מבנים, סימטריה ואנטי-סימטריה','חישוב דפורמציות אלסטיות בעזרת עיקרון עבודה וירטואלית','עבודה וירטואלית: קורות ומסגרות לא מסוימות סטטית','שיטת הגמישות: מטריצת גמישות, פתרון קורות ומסגרות לא מסוימות סטטית','שיטת הגמישות: השפעת אי-התאמות, הפרשי טמפרטורה, שקיעת סמכים ופתרון מסבכים','שיטת התחלקות המומנטים: פתרון קורות','שיטת התחלקות המומנטים: פתרון מסגרות מוחזקות']
   },
   statics2: {
-    title: 'סטטיקת מבנים 2',
-    topics: [
-      'שיטת התחלקות המומנטים (קרוס) במסגרות עם הזזת משקוף',
-      'שיטת קרוס במסגרות לא מוחזקות — שימוש בסימטריה, השפעת הפרשי טמפרטורה ושקיעת סמכים',
-      'שיטת שיפוע המיתר: קורות - שקיעת סמכים וחתכים משתנים',
-      'שיטת שיפוע המיתר: מסגרות',
-      'שיטת הקשיחות: קורות, מסגרות ומסבכים',
-      'סיומת סטטית ויציבות במבנים, אנליזה איכותית של מבנים',
-      'אנליזה מקורבת של מבנים',
-    ]
+    icon: '📊', title: 'סטטיקת מבנים 2',
+    topics: ['שיטת התחלקות המומנטים (קרוס) במסגרות עם הזזת משקוף','שיטת קרוס במסגרות לא מוחזקות — שימוש בסימטריה, הפרשי טמפרטורה ושקיעת סמכים','שיטת שיפוע המיתר: קורות — שקיעת סמכים וחתכים משתנים','שיטת שיפוע המיתר: מסגרות','שיטת הקשיחות: קורות, מסגרות ומסבכים','סיומת סטטית ויציבות במבנים, אנליזה איכותית של מבנים','אנליזה מקורבת של מבנים']
   },
   dynamics: {
-    title: 'דינמיקת מבנים',
-    topics: [
-      'היכרות עם  מושגי יסוד: עומסים דינמיים, מרכיבים של מערכת דינמית, מומנט אינרציה של מסה',
-      'משוואות התנועה למערכת בעלת דרגת חופש אחת (SDOF)',
-      'SDOF: תנודה חופשית במערכת לא מרוסנת',
-      'SDOF: תנודה חופשית במערכת מרוסנת',
-      'SDOF: תגובה לעומס הרמוני במערכת לא מרוסנת',
-      'SDOF: תגובה לעומס הרמוני במערכת מרוסנת, רזוננס',
-      'SDOF: תגובה לעומסים שונים',
-      'עומסים משתנים עם הזמן, אימפולס, אינטגרל דוהמל',
-      'מערכת בעלת מספר דרגות חופש (MDOF): משוואות התנועה, תדירויות עצמיות, מודים עצמיים',
-      'MDOF: אנליזה מודלית',
-      'MDOF: אנליזה מודלית במערכת בעלת ריסון',
-    ]
+    icon: '🔄', title: 'דינמיקת מבנים',
+    topics: ['מבוא: עומסים דינמיים, מרכיבים של מערכת דינמית, מומנט אינרציה של מסה','משוואות התנועה למערכת בעלת דרגת חופש אחת (SDOF)','SDOF: תנודה חופשית במערכת לא מרוסנת','SDOF: תנודה חופשית במערכת מרוסנת','SDOF: תגובה לעומס הרמוני במערכת לא מרוסנת','SDOF: תגובה לעומס הרמוני במערכת מרוסנת, רזוננס','SDOF: תגובה לעומסים שונים','עומסים משתנים עם הזמן, אימפולס, אינטגרל דוהמל','מערכת MDOF: משוואות התנועה, תדירויות עצמיות, מודים עצמיים','MDOF: אנליזה מודלית','MDOF: אנליזה מודלית עם ריסון']
   },
   designprinciples: {
-    title: 'עיקרי תכן מבנים',
-    topics: [
-      'רכיבי קירוי וגישור — מבני תקרות בטון מזוין, מקשיות וצלעות',
-      'רכיבי קירוי וגישור — תקרות טרומות, קרומים ולוח"דים',
-      'סכמות סטטיות ונפח מומנטים',
-      'יציבות מבני בטון',
-      'כוחות ותגובות ומענה תכנוני',
-      'מבני פלדה קלים',
-      'יציבות מבני פלדה',
-      'מבני מסגרות',
-    ]
+    icon: '📋', title: 'עקרי תכן מבנים',
+    topics: ['רכיבי קירוי וגישור — מבני תקרות בטון מזוין, מקשיות וצלעות','רכיבי קירוי וגישור — תקרות טרומות, קרומים ולוח"דים','סכמות סטטיות ונפח מומנטים','יציבות מבני בטון','כוחות ותגובות ומענה תכנוני','מבני פלדה קלים','יציבות מבני פלדה','מבני מסגרות']
   },
   engineering: {
-    title: 'בניית המהנדס',
-    topics: [
-      'תימוך ודיפון',
-      'עומסי תכן ודינמיקה של מבנים: עומסי רעידת אדמה ועומסי רוח',
-      'מערכות הקשחה במבנים רבי קומות, תכנון מבנים בעלי מפתחים גדולים, מסגרות וירנדל ושימוש בגרעיני הקשחה',
-      'מבנים מרחביים וקליפות, קמטים, כיפות כדוריות ומבני היפר',
-      'תכנון מכלים ומבנים בעלי דרישות אדריכליות מיוחדות',
-    ]
+    icon: '🏛️', title: 'בניית המהנדס',
+    topics: ['תימוך ודיפון','עומסי תכן ודינמיקה של מבנים: עומסי רעידת אדמה ועומסי רוח','מערכות הקשחה במבנים רבי קומות, תכנון מבנים בעלי מפתחים גדולים, מסגרות וירנדל וגרעיני הקשחה','מבנים מרחביים וקליפות, קמטים, כיפות כדוריות ומבני היפר','תכנון מכלים ומבנים בעלי דרישות אדריכליות מיוחדות']
   },
   finalproject: {
-    title: 'ליווי פרוייקט גמר',
-    topics: [
-      'הצגת תכניות לדוגמא המדגימות את היעד הנדרש',
-      'ראיית המבנה בתלת מימד דרך תכניות אדריכליות להבטחת יציבות ורציפות האלמנטים האנכיים',
-      'סכמות סטטיות וחלופות',
-      'בחינת מצב השקיעות ובדיקת השקיעות המתקבלות מסטראפ, התאמת העובי לפי שיטת התמירות',
-      'השוואה בין הריאקציות המתקבלות מסטראפ לבין המתקבל לפי אזורי ההשפעה, העומסים לחישוב חדירה ולחישוב רכיבים לחוצים',
-      'השלמת תכנית עבודה טיפוסית לתקרה, כולל פרטים ומבנה תכנית תקני',
-      'סוגיות במידול המבנה בעזרת סטראפ',
-      'קביעת הזיון בממ"ד בהתאם לדרישות: רעידות אדמה, תקנות התגוננות אזרחית, רכיבים לחוצים',
-      'חישוב הזיון בקירות בהתאם לדרגת המשיכות ברעידות אדמה לפי ת"י EC8-1 413',
-      'חישוב הזיון בכלונס לקבלת הכוח האופקי מרעידות אדמה בעזרת סטראפ כקורה על מצע אלסטי',
-      'הקשר בין המבנה העילי והתחתי',
-      'חישוב ראש כלונס, שיטת strut&tie',
-    ]
+    icon: '🎓', title: 'ליווי פרוייקט גמר',
+    topics: ['הצגת תכניות לדוגמא המדגימות את היעד הנדרש','ראיית המבנה בתלת מימד דרך תכניות אדריכליות להבטחת יציבות ורציפות האלמנטים האנכיים','סכמות סטטיות וחלופות','בחינת מצב השקיעות ובדיקת השקיעות המתקבלות מסטראפ, התאמת העובי לפי שיטת התמירות','השוואה בין הריאקציות מסטראפ לבין המתקבל לפי אזורי ההשפעה','העומסים לחישוב חדירה ולחישוב רכיבים לחוצים','השלמת תכנית עבודה טיפוסית לתקרה כולל פרטים ומבנה תכנית תקני','סוגיות במידול המבנה בעזרת סטראפ','קביעת הזיון בממ"ד — רעידות אדמה, תקנות התגוננות אזרחית, רכיבים לחוצים','חישוב הזיון בקירות לפי ת"י EC8-1 413','חישוב הזיון בכלונס לקבלת הכוח האופקי מרעידות אדמה — קורה על מצע אלסטי','הקשר בין המבנה העילי והתחתי','חישוב ראש כלונס — שיטת strut&tie']
   }
 };
 
 function openModal(courseKey) {
-  const course = courses[courseKey];
+  var course = courses[courseKey];
   if (!course) return;
   document.getElementById('modalIcon').textContent = course.icon;
   document.getElementById('modalTitle').textContent = course.title;
-  const ul = document.getElementById('modalTopics');
-  ul.innerHTML = course.topics.map(t => '<li>' + t + '</li>').join('');
-  const msg = encodeURIComponent('היי אור! מתעניין/ת בשיעור בקורס: ' + course.title);
+  var ul = document.getElementById('modalTopics');
+  ul.innerHTML = course.topics.map(function(t) { return '<li>' + t + '</li>'; }).join('');
+  var msg = encodeURIComponent('היי אור! מתעניין/ת בשיעור בקורס: ' + course.title);
   document.getElementById('modalCta').href = 'https://wa.me/9720526620840?text=' + msg;
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -779,30 +543,35 @@ function closeModal(e) {
 }
 
 function animateCount(el) {
-  const target = parseInt(el.dataset.count);
-  const prefix = el.dataset.prefix || '';
-  const steps = 40;
-  const interval = 1200 / steps;
-  let current = 0;
+  var target = parseInt(el.dataset.count);
+  var prefix = el.dataset.prefix || '';
+  var steps = 40;
+  var interval = 1200 / steps;
+  var current = 0;
   el.textContent = prefix + '0';
-  const timer = setInterval(() => {
+  var timer = setInterval(function() {
     current++;
     el.textContent = prefix + Math.round((current / steps) * target);
     if (current >= steps) { el.textContent = prefix + target; clearInterval(timer); }
   }, interval);
 }
+
 function animateChecks(checks) {
-  checks.forEach((el, i) => {
-    setTimeout(() => { el.style.animation = 'checkPop 0.5s forwards'; el.style.opacity = '1'; }, i * 200);
+  checks.forEach(function(el, i) {
+    setTimeout(function() {
+      el.style.animation = 'checkPop 0.5s forwards';
+      el.style.opacity = '1';
+    }, i * 200);
   });
 }
-const heroCard = document.querySelector('.hero-card');
+
+var heroCard = document.querySelector('.hero-card');
 if (heroCard) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          heroCard.querySelectorAll('[data-count]').forEach(el => animateCount(el));
+        setTimeout(function() {
+          heroCard.querySelectorAll('[data-count]').forEach(function(el) { animateCount(el); });
           animateChecks(Array.from(heroCard.querySelectorAll('.check-anim')));
         }, 400);
         observer.disconnect();
@@ -811,34 +580,37 @@ if (heroCard) {
   }, { threshold: 0.5 });
   observer.observe(heroCard);
 }
+
 function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const burger = document.getElementById('hamburger');
-  const overlay = document.getElementById('mobileOverlay');
+  var menu = document.getElementById('mobileMenu');
+  var burger = document.getElementById('hamburger');
+  var overlay = document.getElementById('mobileOverlay');
   menu.classList.toggle('open'); burger.classList.toggle('open'); overlay.classList.toggle('open');
   document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
 }
+
 function closeMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const burger = document.getElementById('hamburger');
-  const overlay = document.getElementById('mobileOverlay');
+  var menu = document.getElementById('mobileMenu');
+  var burger = document.getElementById('hamburger');
+  var overlay = document.getElementById('mobileOverlay');
   menu.classList.remove('open'); burger.classList.remove('open'); overlay.classList.remove('open');
   document.body.style.overflow = '';
 }
+
 function handleSubmit() {
-  const name = document.getElementById('name').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const course = document.getElementById('course').value;
-  const type = document.getElementById('type').value;
+  var name = document.getElementById('name').value.trim();
+  var phone = document.getElementById('phone').value.trim();
+  var course = document.getElementById('course').value;
+  var type = document.getElementById('type').value;
   if (!name || !phone) { alert('נא למלא שם וטלפון לפחות'); return; }
-  const msg = 'היי אור! שמי ' + name + ', הטלפון שלי ' + phone + '.' +
+  var msg = 'היי אור! שמי ' + name + ', הטלפון שלי ' + phone + '.' +
     (course ? ' מתעניין/ת בקורס: ' + course + '.' : '') +
     (type ? ' סוג שיעור: ' + type + '.' : '') +
     (document.getElementById('message').value ? ' ' + document.getElementById('message').value : '');
   window.open('https://wa.me/9720526620840?text=' + encodeURIComponent(msg), '_blank');
-  const toast = document.getElementById('toast');
+  var toast = document.getElementById('toast');
   toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 3500);
+  setTimeout(function() { toast.classList.remove('show'); }, 3500);
 }
 </script>
 </body>
